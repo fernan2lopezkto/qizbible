@@ -1,0 +1,10 @@
+en este archivo pondré las diferentes etapas de lo que valla haciendo
+
+hecho.
+... Crear repo e iniciar proyecto con create-react-app
+
+
+por hacer
+... Crear el diseño gráfico de la página usando figma
+
+... Crear branch para el desarrollo del proyecto.
