@@ -1,7 +1,8 @@
-en este archivo pondré las diferentes etapas de lo que valla haciendo
+en este archivo pondré las diferentes etapas de lo que este haciendo
 
 hecho.
 ... Crear repo e iniciar proyecto con create-react-app
+... Crear pre pagina de proyecto en rama master
 
 
 por hacer
