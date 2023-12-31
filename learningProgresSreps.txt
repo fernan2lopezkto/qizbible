@@ -1,11 +1,11 @@
-en este archivo pondré las diferentes etapas de lo que este haciendo
+en este archivo pondré las diferentes etapas de lo que haga
 
 hecho.
 ... Crear repo e iniciar proyecto con create-react-app
 ... Crear pre pagina de proyecto en rama master
+... Crear branch para el desarrollo del proyecto.
 
 
 por hacer
 ... Crear el diseño gráfico de la página usando figma
 
-... Crear branch para el desarrollo del proyecto.
