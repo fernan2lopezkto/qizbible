@@ -4,8 +4,8 @@ hecho.
 ... Crear repo e iniciar proyecto con create-react-app
 ... Crear pre pagina de proyecto en rama master
 ... Crear branch para el desarrollo del proyecto.
+... Crear el diseño gráfico de la página usando figma
 
 
 por hacer
-... Crear el diseño gráfico de la página usando figma
 
