@@ -8,4 +8,15 @@ hecho.
 
 
 por hacer
+... estructura de archivos de la app
 
+... diagrama de flujo de la app
+
+... componente game
+... componente reglas
+... componente call actions
+... componente footer (contacto)
+
+... componente nabvar
+
+... desarrollo de la lógica del juego 
