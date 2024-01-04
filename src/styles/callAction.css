@@ -1,0 +1,32 @@
+.App-logo {
+    width: 50%;
+    
+}
+
+.call-container {
+    height: 600px;
+    display: flex;
+    background-color: white;
+    margin-left: 8%;
+    margin-right: 8%;
+    justify-content: space-around;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin alternate-reverse infinite 5s linear;
+    }
+  }
+  
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(-10deg);
+    }
+    to {
+      transform: rotate(10deg);
+  
+    }
+  }
+  
+  /* primary 1ABC82 */
+  /* secundary 17232D */

@@ -5,10 +5,11 @@ hecho.
 ... Crear pre pagina de proyecto en rama master
 ... Crear branch para el desarrollo del proyecto.
 ... Crear el diseño gráfico de la página usando figma
+... estructura de archivos de la app
+
 
 
 por hacer
-... estructura de archivos de la app
 
 ... diagrama de flujo de la app
 

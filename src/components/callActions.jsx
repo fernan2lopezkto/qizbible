@@ -1,13 +1,17 @@
+import pnge from '../assets/pngegg.png'
+import "../styles/callAction.css"
+
+
 export default function CallAction() {
   return(
     <>
-    <div>
-      <div>
+    <div className='call-container'>
+      <div className='container'>
         <h1>Preguntas Bíblicas</h1>
         <p>App de preguntas y respuestas bíblicas</p>
       </div>
       <div>
-        <img href="" />
+      <img src={pnge} className="App-logo" alt="logo" />
       </div>
     </div>
     </>
