@@ -10,8 +10,9 @@ export default function CallAction() {
         <h1>Preguntas Bíblicas</h1>
         <p>App de preguntas y respuestas bíblicas</p>
       </div>
-      <div>
+      <div className='container-logo'>
       <img src={pnge} className="App-logo" alt="logo" />
+      <div className='call-action-circle'></div>
       </div>
     </div>
     </>
