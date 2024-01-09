@@ -6,7 +6,7 @@ export default function CallAction() {
   return(
     <>
     <div className='call-container'>
-      <div className='container'>
+      <div className='text-container'>
         <h1>Preguntas Bíblicas</h1>
         <p>App de preguntas y respuestas bíblicas</p>
       </div>

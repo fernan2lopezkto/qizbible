@@ -1,31 +1,48 @@
-.App-logo {
-  height: auto;
-  position: absolute;
+
+/*=== para el logo que se mueve ===*/
+.container-logo {
   width: 50%;
-  z-index: 100;
+  position: relative;
+  background-color: aquamarine;
 }
 
-.call-container {
-    height: 600px;
-    display: flex;
-    background-color: white;
-    margin-left: 8%;
-    margin-right: 8%;
-    justify-content: space-around;
+.App-logo {
+  position: absolute;
+  height: 200px;
+  width: 400px;
+  z-index: 100;
+
+  top: 18%;
+  left: 11%;
 }
 
 .call-action-circle {
   position: relative;
   width: 300px;
-  height: 500px;
+  height: 300px;
   border-radius: 50%;
   background-color: var(--color-primary);
   z-index: 50;
+
+  left: 20%;
 }
 
-.container-logo {
-  position: relative;
-  background-color: aquamarine;
+/*=== para la parte de texto ===*/
+
+.text-container {
+  width: 50%;
+  background-color: burlywood;
+  text-align: left;
+}
+
+/*=== contenedor general ===*/
+.call-container {
+    height: 480px;
+    display: flex;
+    background-color: white;
+    margin-left: 8%;
+    margin-right: 8%;
+    justify-content: space-between;
 }
 
 @media (prefers-reduced-motion: no-preference) {
