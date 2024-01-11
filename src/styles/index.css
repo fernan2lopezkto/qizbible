@@ -1,6 +1,20 @@
 :root {
---color-primary: #1ABC82;
+--color-primary: #4CAF50;
 --color-secundary: #17232D;
+}
+
+h1 {
+  font-size: 70px;
+  margin: 0px;
+  margin: 10px;
+}
+h2 {
+  margin: 0px;
+  font-size: 20px;
+  margin: 10px;
+}
+p {
+  margin: 10px;
 }
 
 body {
@@ -11,15 +25,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background-color: var(--color-primary);
-
 }
 
-.container {
+.general-container {
   display: block;
   background-color: white;
-  margin-left: 8%;
-  margin-right: 8%;
+  margin-left: 15%;
+  margin-right: 15%;
 }
 
 
