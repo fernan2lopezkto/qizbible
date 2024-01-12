@@ -1,12 +1,25 @@
+import "../styles/game.css"
+
 export default function Game() {
-    return (
-        <>
+  return (
+    <>
+      <div className="game-general-container">
         <div>
           <h2>Pregunta</h2>
+          <div className="game-pregunta">
+            <p>Quien mato a goliat</p>
+          </div>
           <div>
-            <p>Está es la pregunta</p>
+            <button>Moises</button>
+            <button>Salomon</button>
+            <button>David</button>
+          </div>
+          <div>
+            <p>Hola Juan</p>
+            <p>tienes 76 puntos acumulados</p>
           </div>
         </div>
-        </>
-    )
+      </div>
+    </>
+  )
 }

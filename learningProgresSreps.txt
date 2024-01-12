@@ -6,6 +6,7 @@ hecho.
 ... Crear branch para el desarrollo del proyecto.
 ... Crear el diseño gráfico de la página usando figma
 ... estructura de archivos de la app
+... componente call actions
 
 
 
@@ -15,7 +16,6 @@ por hacer
 
 ... componente game
 ... componente reglas
-... componente call actions
 ... componente footer (contacto)
 
 ... componente nabvar

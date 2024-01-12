@@ -1,0 +1,14 @@
+.game-general-container {
+    background-color: var(--color-primary);
+    margin: 10%;
+    border-radius: 15px;
+    height: 480px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-pregunta {
+    margin: 50px;
+}
