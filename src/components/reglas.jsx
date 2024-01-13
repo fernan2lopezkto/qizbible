@@ -6,7 +6,7 @@ export default function Reglas() {
             <div className="reglas-container">
                 <div>
                     <h2 className="reglas-titulo"> Reglas </h2>
-                    <p> aquí irían las reglas escritas, cómo se juega, etc.</p>
+                    <p>Aqui iria escrito el como jugar. en que consiste el juego, sus reglas y algunas cosas mas sobre el juego en general</p>
                 </div>
             </div>
         </>
