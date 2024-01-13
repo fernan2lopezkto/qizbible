@@ -1,0 +1,8 @@
+.reglas-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 480px;
+    margin: 10%;
+}

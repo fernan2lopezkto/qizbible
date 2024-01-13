@@ -7,6 +7,7 @@ hecho.
 ... Crear el diseño gráfico de la página usando figma
 ... estructura de archivos de la app
 ... componente call actions
+... componente game
 
 
 
@@ -14,7 +15,6 @@ por hacer
 
 ... diagrama de flujo de la app
 
-... componente game
 ... componente reglas
 ... componente footer (contacto)
 

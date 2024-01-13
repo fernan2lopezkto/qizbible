@@ -1,5 +1,6 @@
 import CallAction from './components/callActions';
 import Game from './components/game';
+import Reglas from './components/reglas';
 import './styles/App.css';
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
       
       <CallAction />
       <Game />
+      <Reglas />
 
     </div>
   );
