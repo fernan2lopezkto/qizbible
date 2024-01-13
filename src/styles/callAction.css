@@ -34,6 +34,7 @@
 }
 
 .call-button {
+  background-color: white;
   padding: 5px 60px;
   font-size: 25px;
   color: var(--color-primary);

@@ -1,3 +1,25 @@
+.game-button-container {
+}
+
+.game-button {
+    background-color: var(--color-primary);
+    padding: 5px 60px;
+    font-size: 25px;
+    color: var(--color-secundary);
+    border: 3px solid var(--color-secundary);
+    border-radius: 12px;
+    margin: 10px;
+  }
+  .game-button:hover {
+    background-color: var(--color-secundary);
+    padding: 5px 60px;
+    font-size: 25px;
+    color: white;
+    border: 3px solid white;
+    border-radius: 12px;
+    margin: 10px;
+  }
+
 .game-general-container {
     background-color: var(--color-primary);
     margin: 10%;
@@ -12,3 +34,4 @@
 .game-pregunta {
     margin: 50px;
 }
+

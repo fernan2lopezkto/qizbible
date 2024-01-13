@@ -9,10 +9,10 @@ export default function Game() {
           <div className="game-pregunta">
             <p>Quien mato a goliat</p>
           </div>
-          <div>
-            <button>Moises</button>
-            <button>Salomon</button>
-            <button>David</button>
+          <div className="game-button-container">
+            <button className="game-button">Moises</button>
+            <button className="game-button">Salomon</button>
+            <button className="game-button">David</button>
           </div>
           <div>
             <p>Hola Juan</p>
