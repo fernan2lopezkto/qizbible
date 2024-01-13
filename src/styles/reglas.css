@@ -6,3 +6,9 @@
     height: 480px;
     margin: 10%;
 }
+
+.reglas-titulo {
+    text-shadow: 2px 2px 4px grey;
+    font-size: 70px;
+    color: var(--color-primary);
+}
