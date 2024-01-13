@@ -16,6 +16,7 @@
 }
 
 .call-action-circle {
+  box-shadow: 5px 2px 15px gray;
   position: relative;
   width: 400px;
   height: 400px;

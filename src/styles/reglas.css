@@ -8,6 +8,7 @@
 }
 
 .reglas-titulo {
+    margin: 50px;
     text-shadow: 2px 2px 4px grey;
     font-size: 70px;
     color: var(--color-primary);

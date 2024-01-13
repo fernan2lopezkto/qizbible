@@ -19,6 +19,8 @@
 }
 
 .game-general-container {
+    box-shadow: 5px 3px 15px rgb(163, 161, 161);
+
     background-color: var(--color-primary);
     margin: 10%;
     border-radius: 15px;
