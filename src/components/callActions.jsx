@@ -1,4 +1,4 @@
-import pnge from '../assets/pngegg.png'
+import pnge from '../assets/pngegg1.png'
 import "../styles/callAction.css"
 
 
