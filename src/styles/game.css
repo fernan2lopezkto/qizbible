@@ -1,4 +1,5 @@
 .game-button {
+    text-decoration: none;
     background-color: var(--color-primary);
     padding: 5px 60px;
     font-size: 25px;
@@ -22,7 +23,7 @@
     box-shadow: 5px 3px 15px rgb(163, 161, 161);
 
     background-color: var(--color-primary);
-    margin: 10%;
+    margin: 20% 10%;
     border-radius: 15px;
     height: 480px;
 

@@ -1,4 +1,5 @@
 import "../styles/footer.css"
+import avatar from "../assets/images/avataaars.png"
 import link from "../assets/images/linkedin.png"
 import git from "../assets/images/github.png"
 import insta from "../assets/images/instagram.png"
@@ -8,6 +9,7 @@ export default function Foot() {
   return (
       <div className="footer-container">
         <div>
+          <img src={avatar} alt="" className="footer-avatar" />
           <p className="footer-mail">fernan2lopezkto@gmail.com</p>
           <p className="footer-description">app hecha para aplicar conocimientos de programacion y desarroyo web, espero que te haya gustado</p>
           <div>

@@ -8,15 +8,17 @@ hecho.
 ... estructura de archivos de la app
 ... componente call actions
 ... componente game
+... componente reglas
+... componente footer (contacto)
 
 
 
 por hacer
 
+... demo de como es el juego
+
 ... diagrama de flujo de la app
 
-... componente reglas
-... componente footer (contacto)
 
 ... componente nabvar
 
