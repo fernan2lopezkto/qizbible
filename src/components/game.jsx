@@ -11,7 +11,7 @@ export default function Game() {
               <p>Quien mato a goliat</p>
             </div>
             <div className="game-button-container">
-              <button className="game-button">Moises</button>
+              <button className="game-button" type="button" onclick="alert('Hello World!')">Moises</button>
               <button className="game-button">Salomon</button>
               <button className="game-button">David</button>
             </div>
