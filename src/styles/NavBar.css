@@ -1,3 +1,7 @@
 .navbar-container {
     display: Flex;
 }
+
+.nav-links-container {
+  display: Flex;
+}
