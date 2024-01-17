@@ -4,8 +4,8 @@ export default function NavBar() {
       <a href="#nav" ClassName="nav-principal-link">BQ<>
       <div ClassName="nav-links-container">
         <a href="#game" ClassName="nav-other-link">Juego</a>
-        <a href="#reglas">Reglas</a>
-        <a href="#footer">Contacto</a>
+        <a href="#reglas" ClassName="nav-other-link">Reglas</a>
+        <a href="#footer" ClassName="nav-other-link">Contacto</a>
       </div>
     </div>
   )
