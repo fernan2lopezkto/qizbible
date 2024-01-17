@@ -1,5 +1,10 @@
 .navbar-container {
     display: Flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 50px;
+    backgroundcolor: var(--color-secundary)
 }
 
 .nav-links-container {
