@@ -5,7 +5,7 @@ export default function NavBar() {
       <div ClassName="nav-links-container">
         <a href="#game" ClassName="nav-other-link">Juego</a>
         <a href="#reglas">Reglas</a>
-        <a href="#footer">about</a>
+        <a href="#footer">Contacto</a>
       </div>
     </div>
   )
