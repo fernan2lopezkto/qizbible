@@ -7,7 +7,7 @@ import web from "../assets/images/web.png"
 
 export default function Foot() {
   return (
-      <div className="footer-container">
+      <div className="footer-container" id="footer">
         <div>
           <img src={avatar} alt="" className="footer-avatar" />
           <p className="footer-mail">fernan2lopezkto@gmail.com</p>

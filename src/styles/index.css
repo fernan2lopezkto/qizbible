@@ -1,19 +1,22 @@
 :root {
 --color-primary: #4caf7f;
---color-secundary: #17232D;
+--color-secundary: #2b3d4d;
 }
 
 h1 {
+  color: var(--color-secundary);
   font-size: 70px;
   margin: 0px;
   margin: 10px;
 }
 h2 {
+  color: var(--color-secundary);
   margin: 0px;
   font-size: 50px;
   margin: 10px;
 }
 p {
+  color: var(--color-secundary);
   font-size: 20px;
   margin: 20px;
 }

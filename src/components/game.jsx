@@ -2,8 +2,7 @@ import "../styles/game.css"
 
 export default function Game() {
   return (
-    <>
-      <div id="game-section">
+      <div id="game-section" className="separacion">
         <div className="game-general-container">
           <div>
             <h2>Pregunta</h2>
@@ -11,9 +10,9 @@ export default function Game() {
               <p>Quien mato a goliat</p>
             </div>
             <div className="game-button-container">
-              <button className="game-button" type="button" onclick="alert('Hello World!')">Moises</button>
-              <button className="game-button">Salomon</button>
-              <button className="game-button">David</button>
+              <button className="game-button" type="button" onClick={() => window.alert('Lo siento, te equivocaste')}>Moises</button>
+              <button className="game-button" onClick={() => window.alert('Lo siento, te equivocaste')}>Salomon</button>
+              <button className="game-button" onClick={() => window.alert('Exelente!! Acertaste. Sumas 5 puntos mas!!')}>David</button>
             </div>
             <div>
               <p>Hola Juan</p>
@@ -22,6 +21,5 @@ export default function Game() {
           </div>
         </div>
       </div>
-    </>
   )
 }

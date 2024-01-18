@@ -10,16 +10,16 @@ hecho.
 ... componente game
 ... componente reglas
 ... componente footer (contacto)
+... componente nabvar
+... demo de como es el juego
 
 
 
 por hacer
 
-... demo de como es el juego
 
 ... diagrama de flujo de la app
 
-
-... componente nabvar
+... explicacion de la logica del juego
 
 ... desarrollo de la lógica del juego 

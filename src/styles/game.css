@@ -23,7 +23,9 @@
     box-shadow: 5px 3px 15px rgb(163, 161, 161);
 
     background-color: var(--color-primary);
-    margin: 20% 10%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
     border-radius: 15px;
     height: 480px;
 
@@ -33,5 +35,9 @@
 }
 
 .game-pregunta {
-    margin: 50px;
+    margin: 30px;
+}
+
+.separacion {
+    padding-top: 10px;
 }
