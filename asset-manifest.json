@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/qizbible/static/css/main.ff6bb950.css",
+    "main.js": "/qizbible/static/js/main.ce9433d5.js",
+    "static/js/787.48ed7b07.chunk.js": "/qizbible/static/js/787.48ed7b07.chunk.js",
+    "static/media/pngegg1.png": "/qizbible/static/media/pngegg1.6dc9b346ea612c15b863.png",
+    "static/media/avataaars.png": "/qizbible/static/media/avataaars.0ade34a3a184b76eaf3d.png",
+    "static/media/github.png": "/qizbible/static/media/github.8a849ff77cff861032ac.png",
+    "index.html": "/qizbible/index.html",
+    "main.ff6bb950.css.map": "/qizbible/static/css/main.ff6bb950.css.map",
+    "main.ce9433d5.js.map": "/qizbible/static/js/main.ce9433d5.js.map",
+    "787.48ed7b07.chunk.js.map": "/qizbible/static/js/787.48ed7b07.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ff6bb950.css",
+    "static/js/main.ce9433d5.js"
+  ]
+}
