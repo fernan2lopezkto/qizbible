@@ -1,0 +1,15 @@
+.reglas-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 480px;
+    margin: 30% 10%;
+}
+
+.reglas-titulo {
+    margin: 50px;
+    text-shadow: 2px 2px 4px grey;
+    font-size: 70px;
+    color: var(--color-primary);
+}
