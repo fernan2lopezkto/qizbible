@@ -1,3 +1,7 @@
+# link de la página 
+
+<a href="https://fernan2lopezkto.github.io/qizbible"></a>
+
 # Maqueta del UI de la web
 
 <img src="./UI/MacBook Pro 14_ - 1.png" alt="imagen" />
