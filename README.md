@@ -1,6 +1,6 @@
 # link de la página 
 
-<a href="https://fernan2lopezkto.github.io/qizbible"></a>
+<a href="https://fernan2lopezkto.github.io/qizbible">Preguntas Bíblicas</a>
 
 # Maqueta del UI de la web
 
