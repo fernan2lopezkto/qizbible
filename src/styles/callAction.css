@@ -30,8 +30,10 @@
 /*=== para la parte de texto ===*/
 
 .text-container {
+  text-shadow: 2px 2px 5px white;
   width: 40%;
   text-align: left;
+  z-index: 150;
 }
 
 .call-button {
