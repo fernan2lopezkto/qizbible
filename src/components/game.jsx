@@ -1,115 +1,75 @@
-import React, { useState, useEffect } from "react";
 import "../styles/game.css";
+import React, { useEffect, useState } from "react";
 
 export default function Game() {
-  // Estado para almacenar preguntas y respuestas
   const [preguntas, setPreguntas] = useState([]);
-  // Estado para el índice de la pregunta actual
-  const [indicePregunta, setIndicePregunta] = useState(0);
-  // Estado para el puntaje del jugador
-  const [puntaje, setPuntaje] = useState(0);
-  // Estado para el nombre del jugador
-  const [nombreJugador, setNombreJugador] = useState(
-    localStorage.getItem("nombreJugador") || ""
-  );
+  const [aidi, setAidi] = useState(null);
+  const [puntos, setPuntos] = useState(10);
+  const [nombre, setNombre] = useState("");
 
-  // Función para cargar las preguntas desde el archivo JSON
-  const cargarPreguntas = async () => {
-    try {
-      const rutaJSON = "../scripts/preguntas.json";
-      const respuesta = await fetch(rutaJSON);
-      console.log(respuesta);
-
-      if (respuesta.ok) {
+  useEffect(() => {
+    const obtenerPreguntas = async () => {
+      try {
+        const respuesta = await fetch('preguntas.json');
         const preguntasJson = await respuesta.json();
         setPreguntas(preguntasJson);
-      } else {
-        console.error("Error al cargar el archivo JSON");
+        setAidi(Math.floor(Math.random() * preguntasJson.length));
+
+    
+      } catch (error) {
+        console.error('Error al cargar el archivo JSON', error);
       }
-    } catch (error) {
-      console.error("Error al cargar el archivo JSON", error);
-    }
-  };
+    };
 
-  // Función para manejar la selección de una respuesta
-  const manejarRespuesta = (indiceRespuesta) => {
-    const preguntaActual = preguntas[indicePregunta];
+    obtenerPreguntas();
 
-    if (indiceRespuesta === preguntaActual.correcta) {
-      // Respuesta correcta, suma 5 puntos
-      setPuntaje((prevPuntaje) => prevPuntaje + 5);
-      window.alert("¡Excelente! Acertaste. Sumas 5 puntos más.");
-    } else {
-      // Respuesta incorrecta
-      window.alert("Lo siento, te equivocaste.");
-    }
-
-    // Avanza al siguiente índice de pregunta
-    setIndicePregunta((prevIndice) => prevIndice + 1);
-  };
-
-  // Función para manejar la entrada del nombre del jugador
-  const manejarNombreChange = (event) => {
-    setNombreJugador(event.target.value);
-  };
-
-  // Función para manejar el envío del formulario (nombre del jugador)
-  const manejarFormularioSubmit = (event) => {
-    event.preventDefault();
-    localStorage.setItem("nombreJugador", nombreJugador);
-  };
-
-  // Cargar preguntas al montar el componente
-  useEffect(() => {
-    cargarPreguntas();
+    const nuevoNombre = window.prompt("Ingresa tu nombre:");
+    setNombre(nuevoNombre || "");  // Si el usuario presiona "Cancelar", se establece un nombre vacío.
   }, []);
 
-  // Verificar si es la primera vez que se abre la aplicación
-  const esPrimeraVez = !localStorage.getItem("nombreJugador");
+  const changeAidi = () => {
+    setAidi(Math.floor(Math.random() * preguntas.length));
+  }
+
+  const chekAnswer = (boton) => {
+    if (boton === preguntas[aidi].correcta) {
+      window.alert("correcto " + nombre + "!!! \n sumas 5 puntos");
+      setPuntos(puntos + 5);
+      console.log(puntos);
+      changeAidi();
+    } else {
+      window.alert("incorrecto");
+      setPuntos(puntos - 2);
+      console.log(puntos);
+    }
+    
+  };
 
   return (
     <div id="game-section" className="separacion">
       <div className="game-general-container">
-        {esPrimeraVez ? (
-          // Preguntar el nombre del jugador si es la primera vez
-          <form onSubmit={manejarFormularioSubmit}>
-            <label>
-              Ingresa tu nombre:
-              <input
-                type="text"
-                value={nombreJugador}
-                onChange={manejarNombreChange}
-              />
-            </label>
-            <button type="submit">Empezar</button>
-          </form>
-        ) : (
-          // Mostrar el juego si ya se ingresó el nombre
-          <div>
-            <h2>Pregunta</h2>
-            <div className="game-pregunta">
-              <p>{preguntas[indicePregunta]?.pregunta}</p>
-            </div>
-            <div className="game-button-container">
-              {preguntas[indicePregunta]?.opciones.map((opcion, index) => (
-                <button
-                  key={index}
-                  className="game-button"
-                  type="button"
-                  onClick={() => manejarRespuesta(index)}
-                >
-                  {opcion}
-                </button>
-              ))}
-            </div>
-            <div>
-              <p>Hola {nombreJugador}</p>
-              <p>Tienes {puntaje} puntos acumulados</p>
-            </div>
+        <div>
+          <h2>Pregunta</h2>
+          <div className="game-pregunta">
+            <p>{preguntas && preguntas[aidi] && preguntas[aidi].pregunta}</p>
           </div>
-        )}
+          <div className="game-button-container">
+            <button className="game-button" onClick={() => chekAnswer(1)}>
+              {preguntas && preguntas[aidi] && preguntas[aidi].opciones[0]}
+            </button>
+            <button className="game-button" onClick={() => chekAnswer(2)}>
+              {preguntas && preguntas[aidi] && preguntas[aidi].opciones[1]}
+            </button>
+            <button className="game-button" onClick={() => chekAnswer(3)}>
+              {preguntas && preguntas[aidi] && preguntas[aidi].opciones[2]}
+            </button>
+          </div>
+          <div>
+            <p>Hola {nombre}</p>
+            <p>tienes {puntos} puntos acumulados</p>
+          </div>
+        </div>
       </div>
     </div>
   );
 }
-
