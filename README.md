@@ -1,9 +1,16 @@
+# link de la página 
+
+<a href="https://fernan2lopezkto.github.io/qizbible">Preguntas Bíblicas</a>
+
 # Maqueta del UI de la web
 
 <img src="./UI/MacBook Pro 14_ - 1.png" alt="imagen" />
 
 ## ..........
 
+# juego
+
+aparece una pregunta al azar con tres opciones de respuesta, el jugador debera presionar el boton con la opcion que crea correcta, y se equivoca le aparecera un pequeño mensaje y se le restaran 2 puntos, si acierta, aparecera un mensaje, se le sumaran 5 puntos y se avanzara a una nueva pregunta tambien al azar.
 
 <a href="https://www.figma.com/file/StiYRLYhh5ddK0EOXjSnHD/Preguntas-B%C3%ADblicas?type=design&node-id=0%3A1&mode=design&t=DGnCcwE3LqWhhcwu-1" target="_blank">Ver en figma</a>
 

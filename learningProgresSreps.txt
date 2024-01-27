@@ -12,6 +12,8 @@ hecho.
 ... componente footer (contacto)
 ... componente nabvar
 ... demo de como es el juego
+... desarrollo de la lógica del juego 
+... explicacion de la logica del juego
 
 
 
@@ -20,6 +22,4 @@ por hacer
 
 ... diagrama de flujo de la app
 
-... explicacion de la logica del juego
 
-... desarrollo de la lógica del juego 
