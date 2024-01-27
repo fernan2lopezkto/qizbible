@@ -1,0 +1,123 @@
+[
+    {
+      "id": 1,
+      "pregunta": "Quién mató a Goliat?",
+      "opciones": ["Eliceo", "David", "Moisés"],
+      "correcta": 2
+    },
+    {
+      "id": 2,
+      "pregunta": "Quién vivió más años?",
+      "opciones": ["Eliseo", "David", "Matusalén"],
+      "correcta": 3
+    },
+    {
+      "id": 3,
+      "pregunta": "Cuál fue el arca que construyó Noé?",
+      "opciones": ["Arca de la Alianza", "Arca de la Creación", "Arca de Noé"],
+      "correcta": 3
+    },
+    {
+      "id": 4,
+      "pregunta": "Quién fue arrojado al foso de los leones?",
+      "opciones": ["Daniel", "José", "Isaías"],
+      "correcta": 1
+    },
+    {
+      "id": 5,
+      "pregunta": "Cuántos hijos tenía Jacob (Israel)?",
+      "opciones": ["10", "12", "20"],
+      "correcta": 2
+    },
+    {
+      "id": 6,
+      "pregunta": "En qué monte sacrificó Abraham a Isaac?",
+      "opciones": ["Monte Horeb", "Monte Moriah", "Monte Sinaí"],
+      "correcta": 2
+    },
+    {
+      "id": 7,
+      "pregunta": "Cuál fue la plaga final de Egipto?",
+      "opciones": ["Plaga de ranas", "Plaga de la muerte de los primogénitos", "Plaga de la oscuridad"],
+      "correcta": 2
+    },
+    {
+      "id": 8,
+      "pregunta": "Quién fue el primer rey de Israel?",
+      "opciones": ["Saúl", "David", "Salomón"],
+      "correcta": 1
+    },
+    {
+      "id": 9,
+      "pregunta": "Cuál era la ocupación de Mateo antes de seguir a Jesús?",
+      "opciones": ["Carpintero", "Pescador", "Recaudador de impuestos"],
+      "correcta": 3
+    },
+    {
+      "id": 10,
+      "pregunta": "En qué ciudad nació Jesús?",
+      "opciones": ["Belén", "Nazaret", "Jerusalén"],
+      "correcta": 1
+    },
+    {
+      "id": 11,
+      "pregunta": "Cuántos días pasó Jesús en el desierto ayunando?",
+      "opciones": ["20", "30", "40"],
+      "correcta": 3
+    },
+    {
+      "id": 12,
+      "pregunta": "Cuál era la profesión de Pablo antes de su conversión?",
+      "opciones": ["Soldado", "Tentmaker (hacedor de tiendas de campaña)", "Carpintero"],
+      "correcta": 2
+    },
+    {
+      "id": 13,
+      "pregunta": "Quién fue el primer mártir cristiano?",
+      "opciones": ["Esteban", "Pedro", "Pablo"],
+      "correcta": 1
+    },
+    {
+      "id": 14,
+      "pregunta": "Cuál fue el primer milagro registrado de Jesús?",
+      "opciones": ["Cambio de agua a vino", "Multiplicación de panes y peces", "Caminar sobre el agua"],
+      "correcta": 1
+    },
+    {
+      "id": 15,
+      "pregunta": "Cuál era el nombre de la esposa de Adán?",
+      "opciones": ["Eva", "Raquel", "Sara"],
+      "correcta": 1
+    },
+    {
+      "id": 16,
+      "pregunta": "Cuántos libros hay en el Nuevo Testamento?",
+      "opciones": ["24", "27", "30"],
+      "correcta": 2
+    },
+    {
+      "id": 17,
+      "pregunta": "En qué río fue bautizado Jesús?",
+      "opciones": ["Nilo", "Tigris", "Jordán"],
+      "correcta": 3
+    },
+    {
+      "id": 18,
+      "pregunta": "Cuántos discípulos tuvo Jesús?",
+      "opciones": ["10", "12", "15"],
+      "correcta": 2
+    },
+    {
+      "id": 19,
+      "pregunta": "Quién escribió la mayoría de los Salmos en la Biblia?",
+      "opciones": ["David", "Salomón", "Moisés"],
+      "correcta": 1
+    },
+    {
+      "id": 20,
+      "pregunta": "Cuál fue la última plaga de Egipto?",
+      "opciones": ["Plaga de granizo", "Plaga de langostas", "Plaga de la muerte de los primogénitos"],
+      "correcta": 3
+    }
+  ]
+  
