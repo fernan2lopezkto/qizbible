@@ -4,7 +4,10 @@ import React, { useEffect, useState } from "react";
 export default function Game() {
   const [preguntas, setPreguntas] = useState([]);
   const [aidi, setAidi] = useState(null);
-  const [puntos, setPuntos] = useState(10);
+  const [puntos, setPuntos] = useState(() => {
+    const storedPuntos = localStorage.getItem("puntos");
+    return storedPuntos ? parseInt(storedPuntos, 10) : 10;
+  });
   const [nombre, setNombre] = useState("");
 
   useEffect(() => {
@@ -14,22 +17,41 @@ export default function Game() {
         const preguntasJson = await respuesta.json();
         setPreguntas(preguntasJson);
         setAidi(Math.floor(Math.random() * preguntasJson.length));
-
-    
       } catch (error) {
         console.error('Error al cargar el archivo JSON', error);
       }
     };
 
     obtenerPreguntas();
-
-    const nuevoNombre = window.prompt("Ingresa tu nombre:");
-    setNombre(nuevoNombre || "");  // Si el usuario presiona "Cancelar", se establece un nombre vacío.
   }, []);
+
+  useEffect(() => {
+    const storedNombre = localStorage.getItem("nombre");
+    if (storedNombre) {
+      setNombre(storedNombre);
+    } else {
+      solicitarNombre();
+    }
+
+    const storedPuntos = localStorage.getItem("puntos");
+    if (storedPuntos) {
+      setPuntos(parseInt(storedPuntos, 10));
+    }
+  }, []); // Solo se ejecuta en el montaje inicial
+
+  useEffect(() => {
+    localStorage.setItem("puntos", puntos.toString());
+  }, [puntos]); // Se ejecuta cada vez que puntos cambie
+
+  const solicitarNombre = () => {
+    const nuevoNombre = window.prompt("Ingresa tu nombre:");
+    setNombre(nuevoNombre || "");
+    localStorage.setItem("nombre", nuevoNombre || "");
+  };
 
   const changeAidi = () => {
     setAidi(Math.floor(Math.random() * preguntas.length));
-  }
+  };
 
   const chekAnswer = (boton) => {
     if (boton === preguntas[aidi].correcta) {
@@ -42,7 +64,13 @@ export default function Game() {
       setPuntos(puntos - 2);
       console.log(puntos);
     }
-    
+  };
+
+  const borrarLocalStorage = () => {
+    localStorage.removeItem("nombre");
+    localStorage.removeItem("puntos");
+    setNombre("");
+    setPuntos(10); // o el valor por defecto que desees
   };
 
   return (
@@ -66,7 +94,8 @@ export default function Game() {
           </div>
           <div>
             <p>Hola {nombre}</p>
-            <p>tienes {puntos} puntos acumulados</p>
+            <p>Tienes {puntos} puntos acumulados</p>
+            <button className="game-button-2" onClick={borrarLocalStorage}>Borrar datos del jugador</button>
           </div>
         </div>
       </div>
