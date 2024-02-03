@@ -3,6 +3,8 @@
 .container-logo {
   width: 60%;
   position: relative;
+
+
 }
 
 .App-logo {
@@ -32,6 +34,9 @@
 .text-container {
   text-shadow: 2px 2px 5px white;
   width: 40%;
+
+
+
   text-align: left;
   z-index: 150;
 }
@@ -59,8 +64,8 @@
     height: 480px;
     display: flex;
     background-color: white;
-    margin-left: 15%;
-    margin-right: 15%;
+    margin-left: 5%;
+    margin-right: 5%;
     justify-content: space-between;
     align-items: center;
 }
