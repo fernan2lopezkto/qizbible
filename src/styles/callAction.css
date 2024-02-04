@@ -1,44 +1,58 @@
 
 /*=== para el logo que se mueve ===*/
 .container-logo {
-  width: 60%;
+  width: 80%;
   position: relative;
+
 
 
 }
 
 .App-logo {
   position: absolute;
-  height: 220px;
-  width: 480px;
+  width: 60vw;
   z-index: 100;
 
   top: 19%;
-  left: 15%;
+  left: 17vw;
 }
 
 .call-action-circle {
   box-shadow: 5px 2px 15px gray;
   position: relative;
-  width: 400px;
-  height: 400px;
+  width: 55vw;
+  height: 55vw;
   border-radius: 50%;
   background-color: var(--color-primary);
   z-index: 50;
 
-  left: 25%;
+
+  top: 20%;
+  left: 17vw;
 }
 
 /*=== para la parte de texto ===*/
 
 .text-container {
+
+  position: absolute;
   text-shadow: 2px 2px 5px white;
-  width: 40%;
+  width: 70vw;
 
+  margin: 0;
+  padding: 0;
 
+  text-align: center;
 
-  text-align: left;
   z-index: 150;
+  left: 9vw;
+}
+
+@media (max-width: 900px) {
+  
+  .text-container {
+    display: none;
+  }
 }
 
 .call-button {
@@ -61,12 +75,13 @@
 
 /*=== contenedor general ===*/
 .call-container {
-    height: 480px;
     display: flex;
     background-color: white;
+
     margin-left: 5%;
     margin-right: 5%;
-    justify-content: space-between;
+    padding-top: 50px;
+
     align-items: center;
 }
 
