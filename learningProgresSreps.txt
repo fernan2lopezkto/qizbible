@@ -23,3 +23,10 @@ por hacer
 ... diagrama de flujo de la app
 
 
+... adaptar modo responsive para game component
+
+... hacer el menú amburguesa
+
+... hacer modo dark
+
+... hacer translate

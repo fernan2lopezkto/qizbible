@@ -6,12 +6,9 @@ export default function CallAction() {
   return (
     <>
       <div className='call-container'>
-        <div className='text-container'>
-          <h1>Preguntas Bíblicas</h1>
-          <p>App de preguntas y respuestas bíblicas</p>
-          <a href="#game-section" className='call-button'>JUGAR</a>
-        </div>
+
         <div className='container-logo'>
+          <h1 className='text-container'>Preguntas Bíblicas</h1>
           <img src={pnge} className="App-logo" alt="logo" />
           <div className='call-action-circle'></div>
         </div>
@@ -19,3 +16,9 @@ export default function CallAction() {
     </>
   )
 }
+
+<div >
+
+<p>App de preguntas y respuestas bíblicas</p>
+<a href="#game-section" className='call-button'>JUGAR</a>
+</div>

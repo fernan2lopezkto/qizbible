@@ -3,13 +3,15 @@ import Foot from './components/footer';
 import Game from './components/game';
 import NavBar from './components/navbar';
 import Reglas from './components/reglas';
+import Hnavbar from './components/hnavbar';
+
 import './styles/App.css';
 
 function App() {
   return (
     <div className="App">
 
-      <NavBar />
+      <Hnavbar />
       <CallAction />
       <Game />
       <Reglas />

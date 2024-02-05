@@ -1,13 +1,21 @@
 :root {
 --color-primary: #4caf7f;
 --color-secundary: #2b3d4d;
+--color_primario: #8527c3fd;
+--color_primario_suave: #8527c3b4;
+--color_blanco: #fff;
+--altura_header: 80px;
+--padding_left_right: 2rem;
+--ancho_maximo: 1200px;
+}
+
+ol, ul {
+  list-style: none;
 }
 
 h1 {
   color: var(--color-secundary);
-  font-size: 70px;
-  margin: 0px;
-  margin: 10px;
+  font-size: 40px;
 }
 h2 {
   color: var(--color-secundary);
