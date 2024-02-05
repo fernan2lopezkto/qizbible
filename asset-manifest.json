@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/qizbible/static/css/main.1be1d12e.css",
-    "main.js": "/qizbible/static/js/main.74ab3e3c.js",
+    "main.css": "/qizbible/static/css/main.d027bc12.css",
+    "main.js": "/qizbible/static/js/main.f17e7bf0.js",
     "static/js/787.48ed7b07.chunk.js": "/qizbible/static/js/787.48ed7b07.chunk.js",
     "static/media/pngegg1.png": "/qizbible/static/media/pngegg1.6dc9b346ea612c15b863.png",
     "static/media/avataaars.png": "/qizbible/static/media/avataaars.0ade34a3a184b76eaf3d.png",
     "static/media/github.png": "/qizbible/static/media/github.8a849ff77cff861032ac.png",
     "index.html": "/qizbible/index.html",
-    "main.1be1d12e.css.map": "/qizbible/static/css/main.1be1d12e.css.map",
-    "main.74ab3e3c.js.map": "/qizbible/static/js/main.74ab3e3c.js.map",
+    "main.d027bc12.css.map": "/qizbible/static/css/main.d027bc12.css.map",
+    "main.f17e7bf0.js.map": "/qizbible/static/js/main.f17e7bf0.js.map",
     "787.48ed7b07.chunk.js.map": "/qizbible/static/js/787.48ed7b07.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1be1d12e.css",
-    "static/js/main.74ab3e3c.js"
+    "static/css/main.d027bc12.css",
+    "static/js/main.f17e7bf0.js"
   ]
 }
