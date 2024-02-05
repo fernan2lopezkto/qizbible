@@ -48,7 +48,7 @@
   left: 9vw;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   
   .text-container {
     display: none;
