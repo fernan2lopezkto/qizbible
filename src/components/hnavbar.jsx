@@ -1,6 +1,27 @@
+import React, { useEffect } from 'react';
 import "../styles/hnavbar.css"
 
-export default function hnavbar() {
+export default function Hnavbar() {
+  useEffect(() => {
+    const links = document.querySelectorAll('.link');
+
+    const closeMenu = () => {
+      const miCheckbox = document.getElementById('menu_hamburguesa');
+      miCheckbox.checked = false;
+    };
+
+    links.forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    return () => {
+      // Limpia los event listeners al desmontar el componente
+      links.forEach(link => {
+        link.removeEventListener('click', closeMenu);
+      });
+    };
+  }, []); // El segundo parámetro [] garantiza que el efecto se ejecute solo una vez al montar el componente
+
   return (
     <header className="header">
         <nav className="navbar">
