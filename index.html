@@ -149,3 +149,300 @@
             </nav>
         </footer>
     </div>
+    <script>
+        const DOM = {
+            app: document.getElementById('app'),
+            sectionsContainer: document.getElementById('sections-container'),
+            sections: {
+                game: document.getElementById('game-section'),
+                rules: document.getElementById('rules-section'),
+                contact: document.getElementById('contact-section'),
+            },
+            navLinks: document.querySelectorAll('.nav-link'),
+            themeToggle: document.getElementById('theme-toggle'),
+            // Game elements
+            question: document.getElementById('current-question'),
+            optionsContainer: document.getElementById('options-container'),
+            feedback: document.getElementById('feedback-message'),
+            scoreDisplay: document.getElementById('score-display'),
+            resetButton: document.getElementById('reset-button'),
+            refBiblicaDisplay: document.getElementById('ref-biblica-display'),
+        };
+
+        const STATE = {
+            questions: [],
+            currentQuestionIndex: null,
+            score: 0,
+            playerName: 'Juan', 
+        };
+
+        const STORAGE_KEYS = {
+            SCORE: 'quizScore',
+            PLAYER_NAME: 'quizPlayerName',
+            DARK_MODE: 'darkModeEnabled'
+        };
+
+        // --- CORE LOGIC ---
+
+        /**
+         * Loads questions from the JSON file.
+         */
+        async function loadQuestions() {
+            try {
+                // Usando preguntas.json como se confirmó
+                const response = await fetch('./preguntas.json'); 
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}. Asegúrate de que preguntas.json existe y está accesible.`);
+                }
+                const data = await response.json();
+
+                if (data.length === 0) {
+                    console.warn("El JSON cargado está vacío. Usando preguntas de ejemplo.");
+                    STATE.questions = [
+                        { id: 1, pregunta: "¿Quién mató a Goliat?", opciones: ["Eliseo", "David", "Moisés"], correcta: 1, refBiblica: "1 Samuel 17:49-50" },
+                        { id: 2, pregunta: "¿Cuál fue la plaga final de Egipto?", opciones: ["Plaga de ranas", "Plaga de la muerte de los primogénitos", "Plaga de la oscuridad"], correcta: 1, refBiblica: "Éxodo 12:29-30" },
+                        { id: 3, pregunta: "¿Qué libro del Nuevo Testamento es conocido por sus profecías?", opciones: ["Mateo", "Romanos", "Apocalipsis"], correcta: 2, refBiblica: "Apocalipsis 1:1" }
+                    ];
+                } else {
+                    STATE.questions = data;
+                }
+                
+                initGame();
+
+            } catch (error) {
+                console.error("Error al cargar las preguntas:", error);
+                DOM.question.textContent = "Error al cargar las preguntas. Verifica la ruta o el formato del archivo preguntas.json";
+            }
+        }
+
+        /**
+         * Initializes game state and UI from storage.
+         */
+        function initGame() {
+            STATE.score = parseInt(localStorage.getItem(STORAGE_KEYS.SCORE) || 0);
+            STATE.playerName = localStorage.getItem(STORAGE_KEYS.PLAYER_NAME) || STATE.playerName;
+            
+            updateScoreDisplay();
+            
+            if (STATE.questions.length > 0) {
+                setRandomQuestion();
+            } else {
+                 DOM.question.textContent = "No hay preguntas cargadas.";
+                 DOM.optionsContainer.innerHTML = '';
+            }
+        }
+
+        /**
+         * Selects and displays a random question.
+         */
+        function setRandomQuestion() {
+            if (STATE.questions.length === 0) return;
+
+            // Generate a random index different from the current one
+            let newIndex;
+            do {
+                newIndex = Math.floor(Math.random() * STATE.questions.length);
+            } while (newIndex === STATE.currentQuestionIndex && STATE.questions.length > 1);
+
+            STATE.currentQuestionIndex = newIndex;
+            const q = STATE.questions[STATE.currentQuestionIndex];
+            
+            DOM.question.textContent = q.pregunta;
+            DOM.optionsContainer.innerHTML = '';
+            DOM.feedback.classList.add('hidden');
+            DOM.refBiblicaDisplay.classList.add('hidden'); // Ocultar referencia al cargar nueva pregunta
+
+            q.opciones.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.textContent = option;
+                button.className = 'w-full p-3 rounded-lg text-lg font-medium text-center transition-colors shadow-md \
+                                   bg-bq-green text-white hover:bg-emerald-700 active:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 \
+                                   dark:bg-emerald-500 dark:hover:bg-emerald-600 dark:active:bg-emerald-700';
+                button.setAttribute('data-index', index);
+                button.onclick = () => handleAnswer(index);
+                DOM.optionsContainer.appendChild(button);
+            });
+        }
+
+        /**
+         * Handles the user's answer selection.
+         * @param {number} selectedIndex The 0-based index of the selected option.
+         */
+        function handleAnswer(selectedIndex) {
+            const q = STATE.questions[STATE.currentQuestionIndex];
+            const isCorrect = selectedIndex === q.correcta;
+            
+            // Disable all buttons after answering
+            Array.from(DOM.optionsContainer.children).forEach(btn => {
+                btn.disabled = true;
+                const optionIndex = parseInt(btn.getAttribute('data-index'));
+                
+                // Highlight based on correctness
+                if (optionIndex === q.correcta) {
+                    // Correct answer (Green)
+                    btn.classList.replace('bg-bq-green', 'bg-green-600');
+                    btn.classList.add('animate-pulse');
+                } else if (optionIndex === selectedIndex) {
+                    // Incorrect selected answer (Red)
+                    btn.classList.replace('bg-bq-green', 'bg-red-600');
+                }
+                
+                // Limpiar clases de hover para que el color de feedback sea dominante
+                btn.classList.remove('hover:bg-emerald-700', 'dark:hover:bg-emerald-600', 'dark:bg-emerald-500');
+            });
+
+            // Update score and show feedback
+            if (isCorrect) {
+                STATE.score += 5;
+                showFeedback("¡Correcto! +5 puntos.", 'text-green-500');
+            } else {
+                STATE.score -= 2;
+                showFeedback(`¡Incorrecto! La respuesta correcta era: "${q.opciones[q.correcta]}". -2 puntos.`, 'text-red-500');
+            }
+            
+            // MOSTRAR REFERENCIA BÍBLICA (CAMBIO SOLICITADO)
+            if (q.refBiblica) {
+                DOM.refBiblicaDisplay.textContent = `Referencia: ${q.refBiblica}`;
+                DOM.refBiblicaDisplay.classList.remove('hidden');
+            }
+
+
+            updateScoreDisplay();
+            localStorage.setItem(STORAGE_KEYS.SCORE, STATE.score);
+
+            // Move to next question after a delay
+            setTimeout(setRandomQuestion, 3500); // 3.5 segundos para leer el feedback y la referencia.
+        }
+        
+        /**
+         * Updates the score display text.
+         */
+        function updateScoreDisplay() {
+            DOM.scoreDisplay.textContent = `Hola ${STATE.playerName}, Tienes ${STATE.score} puntos acumulados`;
+        }
+        /**
+         * Shows a temporary feedback message.
+         * @param {string} message The message to display.
+         * @param {string} colorClass Tailwind color class for the text.
+         */
+        function showFeedback(message, colorClass) {
+            DOM.feedback.textContent = message;
+            DOM.feedback.className = `text-center mt-4 text-lg font-medium ${colorClass}`;
+            DOM.feedback.classList.remove('hidden');
+        }
+
+        /**
+         * Resets the game state and storage.
+         */
+        function resetGame() {
+            const currentName = STATE.playerName;
+            const newName = prompt("Ingresa tu nombre para comenzar de nuevo:", currentName);
+            
+            if (newName !== null) {
+                STATE.playerName = newName.trim() || currentName;
+                STATE.score = 0;
+                localStorage.setItem(STORAGE_KEYS.PLAYER_NAME, STATE.playerName);
+                localStorage.removeItem(STORAGE_KEYS.SCORE);
+                updateScoreDisplay();
+                setRandomQuestion();
+            }
+        }
+
+        // --- UI & NAVIGATION ---
+
+        /**
+         * Handles SPA-style navigation.
+         * @param {string} sectionId The ID of the section to show (e.g., 'game', 'rules').
+         */
+        function navigateTo(sectionId) {
+            // Hide all sections
+            Object.values(DOM.sections).forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            // Show the target section
+            const targetSection = DOM.sections[sectionId];
+            if (targetSection) {
+                targetSection.classList.remove('hidden');
+                document.title = `BQ - ${sectionId.charAt(0).toUpperCase() + sectionId.slice(1)}`;
+
+                // Update URL hash
+                history.pushState(null, null, `#${sectionId}`);
+
+                // Update active link styling
+                DOM.navLinks.forEach(link => {
+                    const linkSection = link.getAttribute('data-section');
+                    if (linkSection === sectionId) {
+                        link.classList.add('text-bq-green', 'font-bold');
+                        link.classList.remove('hover:text-bq-green');
+                    } else {
+                        link.classList.remove('text-bq-green', 'font-bold');
+                        link.classList.add('hover:text-bq-green');
+                    }
+                });
+            }
+        }
+
+        /**
+         * Toggles between dark and light mode.
+         */
+        function toggleDarkMode() {
+            const html = DOM.app.parentElement;
+            const isDarkMode = html.classList.toggle('dark');
+            html.classList.toggle('light', !isDarkMode);
+            localStorage.setItem(STORAGE_KEYS.DARK_MODE, isDarkMode ? 'true' : 'false');
+            
+            // Toggle icons
+            document.getElementById('moon-icon').classList.toggle('hidden', isDarkMode);
+            document.getElementById('sun-icon').classList.toggle('hidden', !isDarkMode);
+        }
+
+        /**
+         * Applies the stored theme preference on load.
+         */
+        function applyThemePreference() {
+            const html = DOM.app.parentElement;
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const storedTheme = localStorage.getItem(STORAGE_KEYS.DARK_MODE);
+
+            if (storedTheme === 'true' || (storedTheme === null && prefersDark)) {
+                html.classList.add('dark');
+                html.classList.remove('light');
+                document.getElementById('moon-icon').classList.add('hidden');
+                document.getElementById('sun-icon').classList.remove('hidden');
+            }
+        }
+
+        // --- EVENT LISTENERS & INITIALIZATION ---
+
+        document.addEventListener('DOMContentLoaded', () => {
+            applyThemePreference();
+            loadQuestions();
+
+            // Navigation handler
+            DOM.navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const sectionId = e.target.getAttribute('data-section');
+                    navigateTo(sectionId);
+                });
+            });
+
+            // Handle back/forward buttons for hash navigation
+            window.addEventListener('popstate', () => {
+                const sectionId = window.location.hash.substring(1) || 'game';
+                navigateTo(sectionId);
+            });
+
+
+            DOM.themeToggle.addEventListener('click', toggleDarkMode);
+            DOM.resetButton.addEventListener('click', resetGame);
+
+            // Initial view based on URL hash or default to game
+            const initialSection = window.location.hash.substring(1) || 'game';
+            navigateTo(initialSection);
+        });
+    </script>
+</body>
+</html>
+
