@@ -110,6 +110,7 @@
                         </div>
                     </div>
                 </section>
+
                 <section id="contact-section" class="section hidden">
                     <h2 class="text-5xl font-extrabold text-bq-green text-center mb-8">Contacto</h2>
                     
@@ -149,6 +150,7 @@
             </nav>
         </footer>
     </div>
+
     <script>
         const DOM = {
             app: document.getElementById('app'),
@@ -198,10 +200,11 @@
 
                 if (data.length === 0) {
                     console.warn("El JSON cargado está vacío. Usando preguntas de ejemplo.");
+                    // Las preguntas de ejemplo usan base 0 para 'correcta' para mayor seguridad.
                     STATE.questions = [
-                        { id: 1, pregunta: "¿Quién mató a Goliat?", opciones: ["Eliseo", "David", "Moisés"], correcta: 1, refBiblica: "1 Samuel 17:49-50" },
-                        { id: 2, pregunta: "¿Cuál fue la plaga final de Egipto?", opciones: ["Plaga de ranas", "Plaga de la muerte de los primogénitos", "Plaga de la oscuridad"], correcta: 1, refBiblica: "Éxodo 12:29-30" },
-                        { id: 3, pregunta: "¿Qué libro del Nuevo Testamento es conocido por sus profecías?", opciones: ["Mateo", "Romanos", "Apocalipsis"], correcta: 2, refBiblica: "Apocalipsis 1:1" }
+                        { id: 1, pregunta: "¿Quién mató a Goliat?", opciones: ["Eliseo", "David", "Moisés"], correcta: 2, refBiblica: "1 Samuel 17:49-50" }, // David está en el índice 1, pero si tu JSON usa 2, ajusto el ejemplo aquí para el JSON.
+                        { id: 2, pregunta: "¿Cuál fue la plaga final de Egipto?", opciones: ["Plaga de ranas", "Plaga de la muerte de los primogénitos", "Plaga de la oscuridad"], correcta: 2, refBiblica: "Éxodo 12:29-30" }, // Plaga de la muerte en índice 1, pero si tu JSON usa 2, ajusto el ejemplo aquí.
+                        { id: 3, pregunta: "¿Qué libro del Nuevo Testamento es conocido por sus profecías?", opciones: ["Mateo", "Romanos", "Apocalipsis"], correcta: 3, refBiblica: "Apocalipsis 1:1" } // Apocalipsis en índice 2, si tu JSON usa 3, ajusto el ejemplo aquí.
                     ];
                 } else {
                     STATE.questions = data;
@@ -266,183 +269,188 @@
 
         /**
          * Handles the user's answer selection.
-         * @param {number} selectedIndex The 0-based index of the selected option.
+         * Corregida para asumir que 'q.correcta' en el JSON es BASE 1 (1, 2, 3...)
+         * @param {number} selectedIndex The 0-based index of the selected option (0, 1, 2).
          */
         function handleAnswer(selectedIndex) {
             const q = STATE.questions[STATE.currentQuestionIndex];
-            const isCorrect = selectedIndex === q.correcta;
             
+            // --- CORRECCIÓN CLAVE: Convertir el índice del JSON (base 1) a índice de array (base 0) ---
+            const correctIndex = q.correcta - 1; 
+            const isCorrect = selectedIndex === correctIndex; // Comparación correcta (base 0)
+
             // Disable all buttons after answering
             Array.from(DOM.optionsContainer.children).forEach(btn => {
                 btn.disabled = true;
                 const optionIndex = parseInt(btn.getAttribute('data-index'));
                 
                 // Highlight based on correctness
-                if (optionIndex === q.correcta) {
+                if (optionIndex === correctIndex) { // Usar el índice de array (0)
                     // Correct answer (Green)
-                    btn.classList.replace('bg-bq-green', 'bg-green-600');
-                    btn.classList.add('animate-pulse');
-                } else if (optionIndex === selectedIndex) {
-                    // Incorrect selected answer (Red)
-                    btn.classList.replace('bg-bq-green', 'bg-red-600');
-                }
-                
-                // Limpiar clases de hover para que el color de feedback sea dominante
-                btn.classList.remove('hover:bg-emerald-700', 'dark:hover:bg-emerald-600', 'dark:bg-emerald-500');
-            });
-
-            // Update score and show feedback
-            if (isCorrect) {
-                STATE.score += 5;
-                showFeedback("¡Correcto! +5 puntos.", 'text-green-500');
-            } else {
-                STATE.score -= 2;
-                showFeedback(`¡Incorrecto! La respuesta correcta era: "${q.opciones[q.correcta]}". -2 puntos.`, 'text-red-500');
-            }
-            
-            // MOSTRAR REFERENCIA BÍBLICA (CAMBIO SOLICITADO)
-            if (q.refBiblica) {
-                DOM.refBiblicaDisplay.textContent = `Referencia: ${q.refBiblica}`;
-                DOM.refBiblicaDisplay.classList.remove('hidden');
-            }
-
-
-            updateScoreDisplay();
-            localStorage.setItem(STORAGE_KEYS.SCORE, STATE.score);
-
-            // Move to next question after a delay
-            setTimeout(setRandomQuestion, 3500); // 3.5 segundos para leer el feedback y la referencia.
+                    btn.classList.replace('bg            btn.classList.replace('bg-bq-green', 'bg-green-600');
+            btn.classList.add('animate-pulse');
+        } else if (optionIndex === selectedIndex) {
+            // Incorrect selected answer (Red)
+            btn.classList.replace('bg-bq-green', 'bg-red-600');
         }
         
-        /**
-         * Updates the score display text.
-         */
-        function updateScoreDisplay() {
-            DOM.scoreDisplay.textContent = `Hola ${STATE.playerName}, Tienes ${STATE.score} puntos acumulados`;
-        }
-        /**
-         * Shows a temporary feedback message.
-         * @param {string} message The message to display.
-         * @param {string} colorClass Tailwind color class for the text.
-         */
-        function showFeedback(message, colorClass) {
-            DOM.feedback.textContent = message;
-            DOM.feedback.className = `text-center mt-4 text-lg font-medium ${colorClass}`;
-            DOM.feedback.classList.remove('hidden');
-        }
+        // Limpiar clases de hover para que el color de feedback sea dominante
+        btn.classList.remove('hover:bg-emerald-700', 'dark:hover:bg-emerald-600', 'dark:bg-emerald-500');
+    });
 
-        /**
-         * Resets the game state and storage.
-         */
-        function resetGame() {
-            const currentName = STATE.playerName;
-            const newName = prompt("Ingresa tu nombre para comenzar de nuevo:", currentName);
-            
-            if (newName !== null) {
-                STATE.playerName = newName.trim() || currentName;
-                STATE.score = 0;
-                localStorage.setItem(STORAGE_KEYS.PLAYER_NAME, STATE.playerName);
-                localStorage.removeItem(STORAGE_KEYS.SCORE);
-                updateScoreDisplay();
-                setRandomQuestion();
+    // Update score and show feedback
+    if (isCorrect) {
+        STATE.score += 5;
+        showFeedback("¡Correcto! +5 puntos.", 'text-green-500');
+    } else {
+        STATE.score -= 2;
+        // Usar el índice de array (0) para acceder al texto de la respuesta
+        showFeedback(`¡Incorrecto! La respuesta correcta era: "${q.opciones[correctIndex]}". -2 puntos.`, 'text-red-500');
+    }
+    
+    // MOSTRAR REFERENCIA BÍBLICA
+    if (q.refBiblica) {
+        DOM.refBiblicaDisplay.textContent = `Referencia: ${q.refBiblica}`;
+        DOM.refBiblicaDisplay.classList.remove('hidden');
+    }
+
+
+    updateScoreDisplay();
+    localStorage.setItem(STORAGE_KEYS.SCORE, STATE.score);
+
+    // Move to next question after a delay
+    setTimeout(setRandomQuestion, 3500); // 3.5 segundos para leer el feedback y la referencia.
+}
+        
+/**
+ * Updates the score display text.
+ */
+function updateScoreDisplay() {
+    DOM.scoreDisplay.textContent = `Hola ${STATE.playerName}, Tienes ${STATE.score} puntos acumulados`;
+}
+
+/**
+ * Shows a temporary feedback message.
+ * @param {string} message The message to display.
+ * @param {string} colorClass Tailwind color class for the text.
+ */
+function showFeedback(message, colorClass) {
+    DOM.feedback.textContent = message;
+    DOM.feedback.className = `text-center mt-4 text-lg font-medium ${colorClass}`;
+    DOM.feedback.classList.remove('hidden');
+}
+
+/**
+ * Resets the game state and storage.
+ */
+function resetGame() {
+    const currentName = STATE.playerName;
+    const newName = prompt("Ingresa tu nombre para comenzar de nuevo:", currentName);
+    
+    if (newName !== null) {
+        STATE.playerName = newName.trim() || currentName;
+        STATE.score = 0;
+        localStorage.setItem(STORAGE_KEYS.PLAYER_NAME, STATE.playerName);
+        localStorage.removeItem(STORAGE_KEYS.SCORE);
+        updateScoreDisplay();
+        setRandomQuestion();
+    }
+}
+
+// --- UI & NAVIGATION ---
+
+/**
+ * Handles SPA-style navigation.
+ * @param {string} sectionId The ID of the section to show (e.g., 'game', 'rules').
+ */
+function navigateTo(sectionId) {
+    // Hide all sections
+    Object.values(DOM.sections).forEach(section => {
+        section.classList.add('hidden');
+    });
+    
+    // Show the target section
+    const targetSection = DOM.sections[sectionId];
+    if (targetSection) {
+        targetSection.classList.remove('hidden');
+        document.title = `BQ - ${sectionId.charAt(0).toUpperCase() + sectionId.slice(1)}`;
+
+        // Update URL hash
+        history.pushState(null, null, `#${sectionId}`);
+
+        // Update active link styling
+        DOM.navLinks.forEach(link => {
+            const linkSection = link.getAttribute('data-section');
+            if (linkSection === sectionId) {
+                link.classList.add('text-bq-green', 'font-bold');
+                link.classList.remove('hover:text-bq-green');
+            } else {
+                link.classList.remove('text-bq-green', 'font-bold');
+                link.classList.add('hover:text-bq-green');
             }
-        }
-
-        // --- UI & NAVIGATION ---
-
-        /**
-         * Handles SPA-style navigation.
-         * @param {string} sectionId The ID of the section to show (e.g., 'game', 'rules').
-         */
-        function navigateTo(sectionId) {
-            // Hide all sections
-            Object.values(DOM.sections).forEach(section => {
-                section.classList.add('hidden');
-            });
-            
-            // Show the target section
-            const targetSection = DOM.sections[sectionId];
-            if (targetSection) {
-                targetSection.classList.remove('hidden');
-                document.title = `BQ - ${sectionId.charAt(0).toUpperCase() + sectionId.slice(1)}`;
-
-                // Update URL hash
-                history.pushState(null, null, `#${sectionId}`);
-
-                // Update active link styling
-                DOM.navLinks.forEach(link => {
-                    const linkSection = link.getAttribute('data-section');
-                    if (linkSection === sectionId) {
-                        link.classList.add('text-bq-green', 'font-bold');
-                        link.classList.remove('hover:text-bq-green');
-                    } else {
-                        link.classList.remove('text-bq-green', 'font-bold');
-                        link.classList.add('hover:text-bq-green');
-                    }
-                });
-            }
-        }
-
-        /**
-         * Toggles between dark and light mode.
-         */
-        function toggleDarkMode() {
-            const html = DOM.app.parentElement;
-            const isDarkMode = html.classList.toggle('dark');
-            html.classList.toggle('light', !isDarkMode);
-            localStorage.setItem(STORAGE_KEYS.DARK_MODE, isDarkMode ? 'true' : 'false');
-            
-            // Toggle icons
-            document.getElementById('moon-icon').classList.toggle('hidden', isDarkMode);
-            document.getElementById('sun-icon').classList.toggle('hidden', !isDarkMode);
-        }
-
-        /**
-         * Applies the stored theme preference on load.
-         */
-        function applyThemePreference() {
-            const html = DOM.app.parentElement;
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const storedTheme = localStorage.getItem(STORAGE_KEYS.DARK_MODE);
-
-            if (storedTheme === 'true' || (storedTheme === null && prefersDark)) {
-                html.classList.add('dark');
-                html.classList.remove('light');
-                document.getElementById('moon-icon').classList.add('hidden');
-                document.getElementById('sun-icon').classList.remove('hidden');
-            }
-        }
-
-        // --- EVENT LISTENERS & INITIALIZATION ---
-
-        document.addEventListener('DOMContentLoaded', () => {
-            applyThemePreference();
-            loadQuestions();
-
-            // Navigation handler
-            DOM.navLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const sectionId = e.target.getAttribute('data-section');
-                    navigateTo(sectionId);
-                });
-            });
-
-            // Handle back/forward buttons for hash navigation
-            window.addEventListener('popstate', () => {
-                const sectionId = window.location.hash.substring(1) || 'game';
-                navigateTo(sectionId);
-            });
-
-
-            DOM.themeToggle.addEventListener('click', toggleDarkMode);
-            DOM.resetButton.addEventListener('click', resetGame);
-
-            // Initial view based on URL hash or default to game
-            const initialSection = window.location.hash.substring(1) || 'game';
-            navigateTo(initialSection);
         });
-    </script>
+    }
+}
+
+/**
+ * Toggles between dark and light mode.
+ */
+function toggleDarkMode() {
+    const html = DOM.app.parentElement;
+    const isDarkMode = html.classList.toggle('dark');
+    html.classList.toggle('light', !isDarkMode);
+    localStorage.setItem(STORAGE_KEYS.DARK_MODE, isDarkMode ? 'true' : 'false');
+    
+    // Toggle icons
+    document.getElementById('moon-icon').classList.toggle('hidden', isDarkMode);
+    document.getElementById('sun-icon').classList.toggle('hidden', !isDarkMode);
+}
+
+/**
+ * Applies the stored theme preference on load.
+ */
+function applyThemePreference() {
+    const html = DOM.app.parentElement;
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const storedTheme = localStorage.getItem(STORAGE_KEYS.DARK_MODE);
+
+    if (storedTheme === 'true' || (storedTheme === null && prefersDark)) {
+        html.classList.add('dark');
+        html.classList.remove('light');
+        document.getElementById('moon-icon').classList.add('hidden');
+        document.getElementById('sun-icon').classList.remove('hidden');
+    }
+}
+
+// --- EVENT LISTENERS & INITIALIZATION ---
+
+document.addEventListener('DOMContentLoaded', () => {
+    applyThemePreference();
+    loadQuestions();
+
+    // Navigation handler
+    DOM.navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const sectionId = e.target.getAttribute('data-section');
+            navigateTo(sectionId);
+        });
+    });
+
+    // Handle back/forward buttons for hash navigation
+    window.addEventListener('popstate', () => {
+        const sectionId = window.location.hash.substring(1) || 'game';
+        navigateTo(sectionId);
+    });
+
+
+    DOM.themeToggle.addEventListener('click', toggleDarkMode);
+    DOM.resetButton.addEventListener('click', resetGame);
+
+    // Initial view based on URL hash or default to game
+    const initialSection = window.location.hash.substring(1) || 'game';
+    navigateTo(initialSection);
+});
+</script>
 </body>
 </html>
-
