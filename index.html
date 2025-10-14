@@ -20,6 +20,7 @@
             --color-secundario: #28a745; /* Verde (Similar a tus capturas) */
             --color-alerta-success: #28a745;
             --color-alerta-error: #dc3545;
+            --color-alerta-warning: #ffc107; /* Nuevo color para ayuda */
             --color-borde: #dee2e6;
             --color-boton-principal: var(--color-secundario);
             --color-boton-hover: #1e7e34;
@@ -38,6 +39,7 @@
                 --color-secundario: #4caf50; /* Verde más claro */
                 --color-alerta-success: #4caf50;
                 --color-alerta-error: #ff5252;
+                --color-alerta-warning: #ffeb3b; /* Nuevo color para ayuda */
                 --color-borde: #333333;
                 --color-boton-principal: var(--color-secundario);
                 --color-boton-hover: #388e3c;
@@ -116,6 +118,8 @@
             margin-bottom: 20px;
             text-align: center;
             font-style: italic;
+            /* Oculto por defecto, se muestra con la ayuda o respuesta */
+            display: none; 
         }
 
         .game-button-container {
@@ -124,7 +128,7 @@
             margin-bottom: 30px;
         }
 
-        .game-button, .game-button-2 {
+        .game-button, .game-button-2, .help-button {
             width: 100%;
             padding: 15px 20px;
             border: none;
@@ -161,6 +165,22 @@
 
         .game-button-2:hover {
             background-color: #c82333;
+        }
+        
+        /* Estilo para el nuevo botón de ayuda */
+        .help-button {
+            background-color: var(--color-alerta-warning);
+            color: var(--color-texto-principal);
+            padding: 10px 20px;
+            font-size: 0.9em;
+            margin-top: 10px;
+            border: 2px solid var(--color-alerta-warning);
+        }
+        
+        .help-button:hover:not(:disabled) {
+            background-color: #e0ac00; /* Un poco más oscuro */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
 
         .player-info {
@@ -337,6 +357,11 @@
                 <p id="referencia-biblica" class="game-referencia"></p>
                 <div class="game-button-container" id="opciones-container">
                     </div>
+                
+                <button class="help-button" id="help-button">
+                    Mostrar Referencia (-2 puntos, +3 si aciertas)
+                </button>
+                
                 <div class="player-info">
                     <p id="player-greeting"></p>
                     <p>Tienes <span id="puntos-acumulados">10</span> puntos acumulados</p>
@@ -350,9 +375,15 @@
             <div class="rules-content">
                 <p>El juego presenta una pregunta al azar con tres opciones de respuesta. El jugador deberá presionar el botón con la opción que crea correcta.</p>
                 <ul>
-                    <li>Si se <strong>equivoca</strong>, aparecerá un pequeño mensaje de alerta y se le <strong>restarán 2 puntos</strong>.</li>
-                    <li>Si <strong>acierta</strong>, aparecerá un mensaje de alerta, se le <strong>sumarán 5 puntos</strong> y se avanzará a una nueva pregunta también al azar.</li>
-                    <li>La referencia bíblica se mostrará después de responder, para que puedas verificarla.</li>
+                    <li>Si se <strong>equivoca</strong>, aparecerá un pequeño mensaje de alerta y se le <strong>restarán 2 puntos</strong>. La referencia bíblica se mostrará inmediatamente.</li>
+                    <li>Si <strong>acierta</strong> (sin usar ayuda), aparecerá un mensaje de alerta, se le <strong>sumarán 5 puntos</strong> y se avanzará a una nueva pregunta.</li>
+                    <li>
+                        <strong>Botón de Ayuda:</strong> Si usas el botón "Mostrar Referencia" antes de responder:
+                        <ul>
+                            <li>Se revela la referencia bíblica de la pregunta actual.</li>
+                            <li>Si <strong>aciertas</strong> después de la ayuda, solo se te <strong>sumarán 3 puntos</strong> (penalización de 2 puntos).</li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </section>
@@ -373,19 +404,16 @@
                         <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.518-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                     </svg>
                 </a>
-                
                 <a href="https://github.com/fernan2lopezkto/qizbible" target="_blank">
                     <svg class="footer-social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.11.82-.26.82-.585 0-.288-.01-1.05-.015-2.053-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.332-1.756-1.332-1.756-1.09-.743.083-.73.083-.73 1.205.085 1.838 1.238 1.838 1.238 1.07 1.833 2.809 1.304 3.49.997.108-.775.419-1.304.762-1.603-2.665-.3-5.464-1.333-5.464-5.93 0-1.31.468-2.38 1.236-3.22-.124-.303-.536-1.52.117-3.176 0 0 1.008-.323 3.301 1.233 0 0 .963-.268 1.956-.272.993.004 1.956.272 1.956.272 2.293-1.556 3.3-1.233 3.3-1.233.653 1.656.241 2.873.118 3.176.77.84 1.235 1.91 1.235 3.22 0 4.61-2.8 5.626-5.474 5.923.43.37.81 1.096.81 2.21 0 1.602-.015 2.889-.015 3.28 0 .326.216.7.825.584C20.565 21.8 24 17.302 24 12c0-6.627-5.373-12-12-12z"/>
                     </svg>
                 </a>
-                
                 <a href="https://www.instagram.com/fernan2lopezkto/" target="_blank">
                     <svg class="footer-social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 2.163c3.204 0 3.584.014 4.856.071 4.044.184 5.688 1.547 5.86 5.86.058 1.27.07 1.65.07 4.856s-.012 3.585-.07 4.856c-.172 4.314-1.816 5.957-5.86 6.13-.197.056-.47.07-.853.07h-7.697c-4.148 0-5.834-1.655-6.002-5.787-.042-1.07-.066-1.564-.066-4.21s.024-3.14.066-4.21c.168-4.132 1.854-5.787 6.002-5.787h7.697zm0 2.216c-3.102 0-3.483.013-4.73.068-3.328.15-4.572 1.244-4.734 4.734-.055 1.247-.068 1.628-.068 4.73s.013 3.483.068 4.73c.162 3.49 1.406 4.584 4.734 4.734 1.247.055 1.628.068 4.73.068s3.483-.013 4.73-.068c3.328-.15 4.572-1.244 4.734-4.734.055-1.247.068-1.628.068-4.73s-.013-3.483-.068-4.73c-.162-3.49-1.406-4.584-4.734-4.734-1.247-.055-1.628-.068-4.73-.068zm0 2.45c2.723 0 4.93 2.207 4.93 4.93s-2.207 4.93-4.93 4.93-4.93-2.207-4.93-4.93 2.207-4.93 4.93-4.93zm0 2.216c-1.503 0-2.714 1.211-2.714 2.714s1.211 2.714 2.714 2.714 2.714-1.211 2.714-2.714-1.211-2.714-2.714-2.714zm5.553-4.085c0 .546-.445.991-.991.991s-.991-.445-.991-.991.445-.991.991-.991c.546 0 .991.445.991.991z"/>
                     </svg>
                 </a>
-
                 <a href="https://linktr.ee/fernan2lopezkto" target="_blank">
                     <svg class="footer-social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16H9v-2h4v2zm0-4H9v-2h4v2zm-1-7c-2.76 0-5 2.24-5 5h2c0-1.66 1.34-3 3-3s3 1.34 3 3h2c0-2.76-2.24-5-5-5z"/>
@@ -399,10 +427,11 @@
         // =====================================
         //           Variables de Estado
         // =====================================
-        let preguntas = []; // Ahora se llenará con la carga asíncrona
-        let aidiActual = null; // Índice de la pregunta actual
+        let preguntas = [];
+        let aidiActual = null;
         let puntos = parseInt(localStorage.getItem("puntos") || 10);
         let nombre = localStorage.getItem("nombre") || "";
+        let helpUsed = false; // NUEVA variable de estado
 
         // =====================================
         //           Elementos del DOM
@@ -413,6 +442,7 @@
         const playerGreeting = document.getElementById('player-greeting');
         const puntosAcumuladosSpan = document.getElementById('puntos-acumulados');
         const borrarDatosBtn = document.getElementById('borrar-datos-btn');
+        const helpButton = document.getElementById('help-button'); // NUEVO elemento
         const gameSection = document.getElementById('game-section');
         const rulesSection = document.getElementById('rules-section');
         const navLinks = document.querySelectorAll('nav a');
@@ -423,17 +453,24 @@
         // =====================================
 
         /** Muestra un toast/alerta temporal */
-        function showToast(message, isSuccess = true) {
+        function showToast(message, isSuccess = true, isWarning = false) {
             const toast = document.createElement('div');
             toast.textContent = message;
-            // ... (Estilos del toast, como en la respuesta anterior)
+            
             toast.style.position = 'fixed';
             toast.style.bottom = '20px';
             toast.style.right = '20px';
             toast.style.padding = '15px 25px';
             toast.style.borderRadius = '8px';
-            toast.style.backgroundColor = isSuccess ? 'var(--color-alerta-success)' : 'var(--color-alerta-error)';
-            toast.style.color = 'white';
+            
+            if (isWarning) {
+                toast.style.backgroundColor = 'var(--color-alerta-warning)';
+                toast.style.color = 'var(--color-texto-principal)';
+            } else {
+                toast.style.backgroundColor = isSuccess ? 'var(--color-alerta-success)' : 'var(--color-alerta-error)';
+                toast.style.color = 'white';
+            }
+            
             toast.style.zIndex = '1000';
             toast.style.boxShadow = '0 4px 10px rgba(0,0,0,0.2)';
             toast.style.transition = 'opacity 0.5s ease-in-out, transform 0.3s';
@@ -453,10 +490,9 @@
             }, 3000);
         }
         
-        /** Carga las preguntas del archivo JSON */
+                /** Carga las preguntas del archivo JSON */
         async function obtenerPreguntas() {
             try {
-                // Modificado para usar fetch
                 const respuesta = await fetch('preguntas.json');
                 if (!respuesta.ok) {
                     throw new Error(`Error HTTP: ${respuesta.status}`);
@@ -464,7 +500,6 @@
                 const preguntasJson = await respuesta.json();
                 preguntas = preguntasJson;
                 
-                // Una vez cargadas, inicia el juego
                 if (preguntas.length > 0) {
                     changeAidi();
                 } else {
@@ -487,18 +522,21 @@
                 return;
             }
 
+            // Reinicia el estado de ayuda y visibilidad de referencia
+            helpUsed = false;
+            helpButton.disabled = false;
+            referenciaBiblica.style.display = 'none'; 
+            
             const pregunta = preguntas[aidiActual];
             preguntaTexto.textContent = pregunta.pregunta;
-            referenciaBiblica.textContent = ''; // Limpia la referencia
-                        opcionesContainer.innerHTML = ''; // Limpia botones anteriores
+            referenciaBiblica.textContent = ''; 
+            opcionesContainer.innerHTML = ''; 
 
             pregunta.opciones.forEach((opcion, index) => {
                 const boton = document.createElement('button');
                 boton.className = 'game-button';
                 boton.textContent = opcion;
-                // El índice de respuesta en el JSON es 1-based, en el array es 0-based, por eso +1
                 const respuestaIndex = index + 1;
-                // Usamos una función anónima para pasar el parámetro
                 boton.addEventListener('click', () => checkAnswer(respuestaIndex)); 
                 opcionesContainer.appendChild(boton);
             });
@@ -524,27 +562,43 @@
         //           Lógica del Juego
         // =====================================
 
+        /** Muestra la referencia bíblica y marca la ayuda como usada */
+        function useHelp() {
+            if (helpUsed) return; // Evita usar la ayuda más de una vez
+            
+            const pregunta = preguntas[aidiActual];
+            referenciaBiblica.textContent = `Referencia: ${pregunta.refBiblica}`;
+            referenciaBiblica.style.display = 'block'; // Muestra la referencia
+            helpButton.disabled = true; // Deshabilita el botón de ayuda
+            helpUsed = true; // Marca que se usó la ayuda
+            showToast("Referencia revelada. Puntuación de acierto reducida a +3.", false, true); // Advertencia
+        }
+
         /** Chequea la respuesta seleccionada */
         function checkAnswer(boton) {
             const pregunta = preguntas[aidiActual];
             
-            // Muestra la referencia bíblica inmediatamente después de la respuesta
-            referenciaBiblica.textContent = `Referencia: ${pregunta.refBiblica}`;
+            // Muestra la referencia bíblica si no se ha usado ayuda (o si es incorrecta)
+            if (!helpUsed) {
+                referenciaBiblica.textContent = `Referencia: ${pregunta.refBiblica}`;
+            }
+            referenciaBiblica.style.display = 'block';
             
-            // Deshabilita los botones para evitar doble click
+            // Deshabilita todos los botones para finalizar la ronda
             document.querySelectorAll('.game-button').forEach(btn => btn.disabled = true);
+            helpButton.disabled = true;
 
 
             if (boton === pregunta.correcta) {
                 // Correcto
-                puntos += 5;
-                showToast("¡Correcto! Sumas 5 puntos.", true);
+                let puntosGanados = helpUsed ? 3 : 5;
+                puntos += puntosGanados;
+                showToast(`¡Correcto! Sumas ${puntosGanados} puntos.`, true);
                 
                 // Espera un poco antes de cambiar de pregunta
                 setTimeout(() => {
                     updatePlayerInfo();
                     changeAidi();
-                    // Los botones se vuelven a habilitar al llamar a renderPregunta() en changeAidi()
                 }, 1500);
                 
             } else {
@@ -553,10 +607,7 @@
                 showToast("Incorrecto. Pierdes 2 puntos.", false);
                 updatePlayerInfo(); // Actualiza puntos inmediatamente
                 
-                // Espera un poco y vuelve a habilitar los botones para que el jugador elija otra opción
-                setTimeout(() => {
-                     document.querySelectorAll('.game-button').forEach(btn => btn.disabled = false);
-                }, 1500);
+                // Si es incorrecto, no avanzamos, pero mantenemos deshabilitado para que vea la referencia
             }
         }
 
@@ -592,12 +643,10 @@
             gameSection.style.display = 'none';
             rulesSection.style.display = 'none';
             
-            // Mostrar la sección seleccionada
             if(document.getElementById(sectionId)) {
                 document.getElementById(sectionId).style.display = 'block';
             }
 
-            // Actualizar el estado 'active' de los enlaces de navegación
             navLinks.forEach(link => link.classList.remove('active'));
             const targetLink = document.querySelector(`nav a[href*="#${sectionId.split('-')[0]}"]`);
             if(targetLink) {
@@ -618,6 +667,8 @@
             
             // 3. Asigna eventos
             borrarDatosBtn.addEventListener('click', borrarLocalStorage);
+            helpButton.addEventListener('click', useHelp); // Evento para el botón de ayuda
+            
 
             // 4. Configura navegación
             navLinks.forEach(link => {
