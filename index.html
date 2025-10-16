@@ -17,10 +17,11 @@
             --color-texto-principal: #1e1e1e;
             --color-texto-secundario: #5c6773;
             --color-primario: #007bff; /* Azul */
-            --color-secundario: #28a745; /* Verde (Similar a tus capturas) */
+            --color-secundario: #28a745; /* Verde */
             --color-alerta-success: #28a745;
             --color-alerta-error: #dc3545;
-            --color-alerta-warning: #007bff; /* Nuevo color para ayuda */
+            /* Color de alerta de ayuda ahora es oscuro para contraste */
+            --color-alerta-help: #1f2a38; 
             --color-borde: #dee2e6;
             --color-boton-principal: var(--color-secundario);
             --color-boton-hover: #1e7e34;
@@ -39,7 +40,8 @@
                 --color-secundario: #4caf50; /* Verde más claro */
                 --color-alerta-success: #4caf50;
                 --color-alerta-error: #ff5252;
-                --color-alerta-warning: #ffeb3b; /* Nuevo color para ayuda */
+                /* Color de alerta de ayuda ahora es oscuro para contraste */
+                --color-alerta-help: #1f2a38; 
                 --color-borde: #333333;
                 --color-boton-principal: var(--color-secundario);
                 --color-boton-hover: #388e3c;
@@ -112,13 +114,18 @@
             text-align: center;
         }
 
+        /* Estilo para la referencia (similar a la pregunta) */
         .game-referencia {
-            font-size: 0.9em;
-            color: var(--color-texto-secundario);
-            margin-bottom: 20px;
+            font-size: 1.1em;
+            font-weight: 500;
+            color: var(--color-texto-principal);
+            margin: 10px 0 25px 0;
+            padding: 15px;
+            border: 2px solid var(--color-primario);
+            border-radius: 8px;
             text-align: center;
             font-style: italic;
-            /* Oculto por defecto, se muestra con la ayuda o respuesta */
+            background-color: var(--color-fondo);
             display: none; 
         }
 
@@ -167,18 +174,17 @@
             background-color: #c82333;
         }
         
-        /* Estilo para el nuevo botón de ayuda */
+        /* Botón de ayuda con estilo de navbar */
         .help-button {
-            background-color: var(--color-alerta-warning);
-            color: var(--color-texto-principal);
+            background-color: var(--color-footer-fondo); 
+            color: white; 
             padding: 10px 20px;
             font-size: 0.9em;
             margin-top: 10px;
-            border: 2px solid var(--color-alerta-warning);
         }
         
         .help-button:hover:not(:disabled) {
-            background-color: #e0ac00; /* Un poco más oscuro */
+            background-color: #3b5065; 
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
@@ -226,7 +232,7 @@
             color: white;
             padding: 40px 20px;
             text-align: center;
-            margin-top: auto; /* Empuja el footer hacia abajo */
+            margin-top: auto; 
         }
         
         .footer-avatar {
@@ -431,7 +437,7 @@
         let aidiActual = null;
         let puntos = parseInt(localStorage.getItem("puntos") || 10);
         let nombre = localStorage.getItem("nombre") || "";
-        let helpUsed = false; // NUEVA variable de estado
+        let helpUsed = false; 
 
         // =====================================
         //           Elementos del DOM
@@ -442,7 +448,7 @@
         const playerGreeting = document.getElementById('player-greeting');
         const puntosAcumuladosSpan = document.getElementById('puntos-acumulados');
         const borrarDatosBtn = document.getElementById('borrar-datos-btn');
-        const helpButton = document.getElementById('help-button'); // NUEVO elemento
+        const helpButton = document.getElementById('help-button'); 
         const gameSection = document.getElementById('game-section');
         const rulesSection = document.getElementById('rules-section');
         const navLinks = document.querySelectorAll('nav a');
@@ -453,7 +459,7 @@
         // =====================================
 
         /** Muestra un toast/alerta temporal */
-        function showToast(message, isSuccess = true, isWarning = false) {
+        function showToast(message, isSuccess = true, isHelp = false) {
             const toast = document.createElement('div');
             toast.textContent = message;
             
@@ -463,9 +469,9 @@
             toast.style.padding = '15px 25px';
             toast.style.borderRadius = '8px';
             
-            if (isWarning) {
-                toast.style.backgroundColor = 'var(--color-alerta-warning)';
-                toast.style.color = 'var(--color-texto-principal)';
+            if (isHelp) { 
+                toast.style.backgroundColor = 'var(--color-alerta-help)';
+                toast.style.color = 'white';
             } else {
                 toast.style.backgroundColor = isSuccess ? 'var(--color-alerta-success)' : 'var(--color-alerta-error)';
                 toast.style.color = 'white';
@@ -483,14 +489,17 @@
                 toast.style.transform = 'translateY(0)';
             }, 10);
 
+            // Código a partir de tu última captura
             setTimeout(() => {
                 toast.style.opacity = '0';
                 toast.style.transform = 'translateY(100%)';
+                toast.addEventListener('transitionend', () =                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(100%)';
                 toast.addEventListener('transitionend', () => toast.remove());
-            }, 3000);
+            }, 5000); // Aumentado a 5 segundos para mejor visibilidad
         }
         
-                /** Carga las preguntas del archivo JSON */
+        /** Carga las preguntas del archivo JSON */
         async function obtenerPreguntas() {
             try {
                 const respuesta = await fetch('preguntas.json');
@@ -525,6 +534,7 @@
             // Reinicia el estado de ayuda y visibilidad de referencia
             helpUsed = false;
             helpButton.disabled = false;
+            helpButton.style.display = 'block'; // Asegura que el botón de ayuda sea visible
             referenciaBiblica.style.display = 'none'; 
             
             const pregunta = preguntas[aidiActual];
@@ -569,24 +579,29 @@
             const pregunta = preguntas[aidiActual];
             referenciaBiblica.textContent = `Referencia: ${pregunta.refBiblica}`;
             referenciaBiblica.style.display = 'block'; // Muestra la referencia
-            helpButton.disabled = true; // Deshabilita el botón de ayuda
+            
+            // Desaparece el botón al usarlo
+            helpButton.style.display = 'none'; 
+            helpButton.disabled = true; 
+            
             helpUsed = true; // Marca que se usó la ayuda
-            showToast("Referencia revelada. Puntuación de acierto reducida a +3.", false, true); // Advertencia
+            showToast("Referencia revelada. Puntuación de acierto reducida a +3.", false, true); 
         }
 
         /** Chequea la respuesta seleccionada */
         function checkAnswer(boton) {
             const pregunta = preguntas[aidiActual];
             
-            // Muestra la referencia bíblica si no se ha usado ayuda (o si es incorrecta)
+            // Muestra la referencia bíblica si no se ha usado ayuda 
             if (!helpUsed) {
                 referenciaBiblica.textContent = `Referencia: ${pregunta.refBiblica}`;
+                referenciaBiblica.style.display = 'block';
             }
-            referenciaBiblica.style.display = 'block';
             
             // Deshabilita todos los botones para finalizar la ronda
             document.querySelectorAll('.game-button').forEach(btn => btn.disabled = true);
             helpButton.disabled = true;
+            helpButton.style.display = 'none'; // Asegura que se oculte al responder
 
 
             if (boton === pregunta.correcta) {
@@ -667,7 +682,7 @@
             
             // 3. Asigna eventos
             borrarDatosBtn.addEventListener('click', borrarLocalStorage);
-            helpButton.addEventListener('click', useHelp); // Evento para el botón de ayuda
+            helpButton.addEventListener('click', useHelp); 
             
 
             // 4. Configura navegación
