@@ -1,352 +1,802 @@
 [
   {
     "id": 1,
-    "pregunta": "Quién mató a Goliat?",
+    "pregunta": "¿Quién mató a Goliat?",
     "opciones": ["Eliceo", "David", "Moisés"],
     "correcta": 2,
-    "refBiblica": "1 Samuel 17:49-50"
+    "refBiblica": "1 Samuel 17:49-50",
+    "dificultad": "facil"
   },
   {
     "id": 2,
-    "pregunta": "Quién vivió más años?",
+    "pregunta": "¿Quién vivió más años según la Biblia?",
     "opciones": ["Eliseo", "David", "Matusalén"],
     "correcta": 3,
-    "refBiblica": "Génesis 5:27"
+    "refBiblica": "Génesis 5:27",
+    "dificultad": "facil"
   },
   {
     "id": 3,
-    "pregunta": "Cuál fue el arca que construyó Noé?",
+    "pregunta": "¿Qué arca construyó Noé para salvar a su familia y a los animales?",
     "opciones": ["Arca de la Alianza", "Arca de la Creación", "Arca de Noé"],
     "correcta": 3,
-    "refBiblica": "Génesis 6:14"
+    "refBiblica": "Génesis 6:14",
+    "dificultad": "facil"
   },
   {
     "id": 4,
-    "pregunta": "Quién fue arrojado al foso de los leones?",
+    "pregunta": "¿Quién fue arrojado al foso de los leones?",
     "opciones": ["Daniel", "José", "Isaías"],
     "correcta": 1,
-    "refBiblica": "Daniel 6:16"
+    "refBiblica": "Daniel 6:16",
+    "dificultad": "facil"
   },
   {
     "id": 5,
-    "pregunta": "Cuántos hijos tenía Jacob (Israel)?",
+    "pregunta": "¿Cuántos hijos tuvo Jacob, que se convirtieron en las doce tribus de Israel?",
     "opciones": ["10", "12", "20"],
     "correcta": 2,
-    "refBiblica": "Génesis 35:22b"
+    "refBiblica": "Génesis 35:22b",
+    "dificultad": "facil"
   },
   {
     "id": 6,
-    "pregunta": "En qué monte sacrificó Abraham a Isaac?",
+    "pregunta": "¿En qué monte Dios le pidió a Abraham que sacrificara a Isaac?",
     "opciones": ["Monte Horeb", "Monte Moriah", "Monte Sinaí"],
     "correcta": 2,
-    "refBiblica": "Génesis 22:2"
+    "refBiblica": "Génesis 22:2",
+    "dificultad": "normal"
   },
   {
     "id": 7,
-    "pregunta": "Cuál fue la plaga final de Egipto?",
-    "opciones": ["Plaga de ranas", "Plaga de la muerte de los primogénitos", "Plaga de la oscuridad"],
+    "pregunta": "¿Cuál fue la última de las diez plagas de Egipto?",
+    "opciones": ["Plaga de ranas", "Muerte de los primogénitos", "Plaga de la oscuridad"],
     "correcta": 2,
-    "refBiblica": "Éxodo 12:29"
+    "refBiblica": "Éxodo 12:29",
+    "dificultad": "facil"
   },
   {
     "id": 8,
-    "pregunta": "Quién fue el primer rey de Israel?",
+    "pregunta": "¿Quién fue el primer rey de Israel?",
     "opciones": ["Saúl", "David", "Salomón"],
     "correcta": 1,
-    "refBiblica": "1 Samuel 10:24"
+    "refBiblica": "1 Samuel 10:24",
+    "dificultad": "facil"
   },
   {
     "id": 9,
-    "pregunta": "Cuál era la ocupación de Mateo antes de seguir a Jesús?",
+    "pregunta": "¿Cuál era la ocupación de Mateo antes de seguir a Jesús?",
     "opciones": ["Carpintero", "Pescador", "Recaudador de impuestos"],
     "correcta": 3,
-    "refBiblica": "Mateo 9:9"
+    "refBiblica": "Mateo 9:9",
+    "dificultad": "normal"
   },
   {
     "id": 10,
-    "pregunta": "En qué ciudad nació Jesús?",
+    "pregunta": "¿En qué ciudad nació Jesús?",
     "opciones": ["Belén", "Nazaret", "Jerusalén"],
     "correcta": 1,
-    "refBiblica": "Miqueas 5:2, Mateo 2:1"
+    "refBiblica": "Miqueas 5:2, Mateo 2:1",
+    "dificultad": "facil"
   },
   {
     "id": 11,
-    "pregunta": "Cuántos días pasó Jesús en el desierto ayunando?",
+    "pregunta": "¿Cuántos días ayunó Jesús en el desierto?",
     "opciones": ["20", "30", "40"],
     "correcta": 3,
-    "refBiblica": "Mateo 4:2"
+    "refBiblica": "Mateo 4:2",
+    "dificultad": "facil"
   },
   {
     "id": 12,
-    "pregunta": "Cuál era la profesión de Pablo antes de su conversión?",
+    "pregunta": "¿Cuál era la profesión de Pablo con la que se mantenía a veces?",
     "opciones": ["Soldado", "Hacedor de tiendas", "Carpintero"],
     "correcta": 2,
-    "refBiblica": "Hechos 18:3"
+    "refBiblica": "Hechos 18:3",
+    "dificultad": "normal"
   },
   {
     "id": 13,
-    "pregunta": "Quién fue el primer mártir cristiano?",
+    "pregunta": "¿Quién es considerado el primer mártir cristiano?",
     "opciones": ["Esteban", "Pedro", "Pablo"],
     "correcta": 1,
-    "refBiblica": "Hechos 7:58-60"
+    "refBiblica": "Hechos 7:58-60",
+    "dificultad": "facil"
   },
   {
     "id": 14,
-    "pregunta": "Cuál fue el primer milagro registrado de Jesús?",
-    "opciones": ["Cambio de agua a vino", "Multiplicación de panes y peces", "Caminar sobre el agua"],
+    "pregunta": "¿Cuál fue el primer milagro registrado de Jesús?",
+    "opciones": ["Convertir el agua en vino", "Multiplicar panes y peces", "Caminar sobre el agua"],
     "correcta": 1,
-    "refBiblica": "Juan 2:1-11"
+    "refBiblica": "Juan 2:1-11",
+    "dificultad": "facil"
   },
   {
     "id": 15,
-    "pregunta": "Cuál era el nombre de la esposa de Adán?",
+    "pregunta": "¿Cuál era el nombre de la esposa de Adán?",
     "opciones": ["Eva", "Raquel", "Sara"],
     "correcta": 1,
-    "refBiblica": "Génesis 3:20"
+    "refBiblica": "Génesis 3:20",
+    "dificultad": "facil"
   },
   {
     "id": 16,
-    "pregunta": "Cuántos libros hay en el Nuevo Testamento?",
+    "pregunta": "¿Cuántos libros hay en el Nuevo Testamento?",
     "opciones": ["24", "27", "30"],
     "correcta": 2,
-    "refBiblica": "Índice del Nuevo Testamento"
+    "refBiblica": "Índice del Nuevo Testamento",
+    "dificultad": "facil"
   },
   {
     "id": 17,
-    "pregunta": "En qué río fue bautizado Jesús?",
+    "pregunta": "¿En qué río fue bautizado Jesús por Juan el Bautista?",
     "opciones": ["Nilo", "Tigris", "Jordán"],
     "correcta": 3,
-    "refBiblica": "Marcos 1:9"
+    "refBiblica": "Marcos 1:9",
+    "dificultad": "facil"
   },
   {
     "id": 18,
-    "pregunta": "Cuántos discípulos tuvo Jesús?",
+    "pregunta": "¿Cuántos discípulos apóstoles eligió Jesús?",
     "opciones": ["10", "12", "15"],
     "correcta": 2,
-    "refBiblica": "Mateo 10:1-4"
+    "refBiblica": "Mateo 10:1-4",
+    "dificultad": "facil"
   },
   {
     "id": 19,
-    "pregunta": "Quién escribió la mayoría de los Salmos en la Biblia?",
+    "pregunta": "¿A quién se le atribuye la autoría de la mayoría de los Salmos?",
     "opciones": ["David", "Salomón", "Moisés"],
     "correcta": 1,
-    "refBiblica": "Títulos de los Salmos (Ej. Salmo 3, 4, 5...)"
+    "refBiblica": "Títulos de los Salmos (Ej. Salmo 3, 4, 5...)",
+    "dificultad": "facil"
   },
   {
     "id": 20,
-    "pregunta": "Cuál es el primer libro de la Biblia?",
+    "pregunta": "¿Cuál es el primer libro de la Biblia?",
     "opciones": ["Mateo", "Apocalipsis", "Génesis"],
     "correcta": 3,
-    "refBiblica": "Índice del Antiguo Testamento"
+    "refBiblica": "Índice del Antiguo Testamento",
+    "dificultad": "facil"
   },
   {
     "id": 21,
-    "pregunta": "Quién fue el profeta que confrontó al rey David por su pecado con Betsabé?",
+    "pregunta": "¿Qué profeta confrontó al rey David por su pecado con Betsabé?",
     "opciones": ["Elías", "Natán", "Jeremías"],
     "correcta": 2,
-    "refBiblica": "2 Samuel 12:1-7"
+    "refBiblica": "2 Samuel 12:1-7",
+    "dificultad": "normal"
   },
   {
     "id": 22,
-    "pregunta": "Cuál de estos no era uno de los hijos de Noé?",
+    "pregunta": "¿Cuál de estos no era uno de los hijos de Noé?",
     "opciones": ["Sem", "Cam", "Abel"],
     "correcta": 3,
-    "refBiblica": "Génesis 6:10"
+    "refBiblica": "Génesis 6:10",
+    "dificultad": "facil"
   },
   {
     "id": 23,
-    "pregunta": "Qué le dio de comer el cuervo al profeta Elías junto al arroyo?",
-    "opciones": ["Pescado y miel", "Pan y carne", "Frutas y agua"],
+    "pregunta": "¿Qué animal le llevaba comida al profeta Elías junto al arroyo?",
+    "opciones": ["Palomas", "Cuervos", "Águilas"],
     "correcta": 2,
-    "refBiblica": "1 Reyes 17:6"
+    "refBiblica": "1 Reyes 17:6",
+    "dificultad": "normal"
   },
   {
     "id": 24,
-    "pregunta": "A qué ciudad huían Jonás cuando fue tragado por el gran pez?",
+    "pregunta": "¿A qué ciudad huía Jonás para no obedecer a Dios?",
     "opciones": ["Tarsis", "Nínive", "Jope"],
     "correcta": 1,
-    "refBiblica": "Jonás 1:3"
+    "refBiblica": "Jonás 1:3",
+    "dificultad": "normal"
   },
   {
     "id": 25,
-    "pregunta": "Cómo se llamaba la esposa de Isaac?",
+    "pregunta": "¿Cómo se llamaba la esposa de Isaac?",
     "opciones": ["Sara", "Rebeca", "Raquel"],
     "correcta": 2,
-    "refBiblica": "Génesis 24:67"
+    "refBiblica": "Génesis 24:67",
+    "dificultad": "facil"
   },
   {
     "id": 26,
-    "pregunta": "Qué apóstol dudó de la resurrección de Jesús hasta que vio sus heridas?",
+    "pregunta": "¿Qué apóstol dudó de la resurrección de Jesús hasta que lo vio?",
     "opciones": ["Pedro", "Juan", "Tomás"],
     "correcta": 3,
-    "refBiblica": "Juan 20:24-28"
+    "refBiblica": "Juan 20:24-28",
+    "dificultad": "facil"
   },
   {
     "id": 27,
-    "pregunta": "En la parábola del buen samaritano, ¿quién fue el primero en pasar junto al hombre herido?",
+    "pregunta": "En la parábola del buen samaritano, ¿quién fue el primero en pasar junto al herido?",
     "opciones": ["Un levita", "Un sacerdote", "Un fariseo"],
     "correcta": 2,
-    "refBiblica": "Lucas 10:31"
+    "refBiblica": "Lucas 10:31",
+    "dificultad": "normal"
   },
   {
     "id": 28,
-    "pregunta": "Cuál fue el rey que construyó el primer Templo de Jerusalén?",
+    "pregunta": "¿Qué rey construyó el primer Templo de Jerusalén?",
     "opciones": ["David", "Saúl", "Salomón"],
     "correcta": 3,
-    "refBiblica": "1 Reyes 6:1-2"
+    "refBiblica": "1 Reyes 6:1-2",
+    "dificultad": "facil"
   },
   {
     "id": 29,
-    "pregunta": "Cuántos libros componen el Pentateuco (la Ley de Moisés)?",
+    "pregunta": "¿Cuántos libros componen el Pentateuco (la Torá)?",
     "opciones": ["3", "5", "7"],
     "correcta": 2,
-    "refBiblica": "Los primeros 5 libros: Génesis, Éxodo, Levítico, Números, Deuteronomio"
+    "refBiblica": "Los primeros 5 libros del AT",
+    "dificultad": "facil"
   },
   {
     "id": 30,
-    "pregunta": "Cuál de los jueces de Israel era zurdo y liberó a Israel de Eglón, rey de Moab?",
+    "pregunta": "¿Qué juez de Israel era zurdo y usó una daga para liberar a su pueblo?",
     "opciones": ["Gedeón", "Sansón", "Aod"],
     "correcta": 3,
-    "refBiblica": "Jueces 3:15-21"
+    "refBiblica": "Jueces 3:15-21",
+    "dificultad": "normal"
   },
   {
     "id": 31,
-    "pregunta": "Cómo se llamaba el siervo del sumo sacerdote al que Pedro le cortó la oreja?",
+    "pregunta": "¿Cómo se llamaba el siervo al que Pedro le cortó la oreja?",
     "opciones": ["Barrabás", "Malco", "Simón de Cirene"],
     "correcta": 2,
-    "refBiblica": "Juan 18:10"
+    "refBiblica": "Juan 18:10",
+    "dificultad": "normal"
   },
   {
     "id": 32,
-    "pregunta": "Qué mujer fue jueza en Israel y guió al ejército a la victoria?",
+    "pregunta": "¿Qué mujer fue la única jueza de Israel?",
     "opciones": ["Ester", "Rut", "Débora"],
     "correcta": 3,
-    "refBiblica": "Jueces 4:4-9"
+    "refBiblica": "Jueces 4:4-9",
+    "dificultad": "normal"
   },
   {
     "id": 33,
-    "pregunta": "Qué le pidió Eliseo a Elías antes de que éste fuera arrebatado al cielo?",
+    "pregunta": "¿Qué le pidió Eliseo a Elías antes de que este fuera llevado al cielo?",
     "opciones": ["Riquezas y honor", "Una doble porción de su espíritu", "Venganza sobre sus enemigos"],
     "correcta": 2,
-    "refBiblica": "2 Reyes 2:9"
+    "refBiblica": "2 Reyes 2:9",
+    "dificultad": "dificil"
   },
   {
     "id": 34,
-    "pregunta": "Cuál de los doce discípulos era conocido como el 'zelote'?",
+    "pregunta": "¿Cuál de los doce discípulos era conocido como el 'zelote'?",
     "opciones": ["Andrés", "Judas Iscariote", "Simón"],
     "correcta": 3,
-    "refBiblica": "Lucas 6:15"
+    "refBiblica": "Lucas 6:15",
+    "dificultad": "normal"
   },
   {
     "id": 35,
-    "pregunta": "En qué ciudad fue sanado el paralítico que descolgaron por el techo?",
+    "pregunta": "¿En qué ciudad descolgaron a un paralítico por el techo para que Jesús lo sanara?",
     "opciones": ["Jerusalén", "Capernaum", "Jericó"],
     "correcta": 2,
-    "refBiblica": "Marcos 2:1-5"
+    "refBiblica": "Marcos 2:1-5",
+    "dificultad": "normal"
   },
   {
     "id": 36,
-    "pregunta": "Quién fue el rey de Salem que bendijo a Abraham después de la batalla?",
+    "pregunta": "¿Qué rey de Salem, sacerdote del Dios Altísimo, bendijo a Abraham?",
     "opciones": ["Abimelec", "Faraón", "Melquisedec"],
     "correcta": 3,
-    "refBiblica": "Génesis 14:18-20"
+    "refBiblica": "Génesis 14:18-20",
+    "dificultad": "dificil"
   },
   {
     "id": 37,
-    "pregunta": "Cuál de los amigos de Job fue el primero en hablar para 'consolarlo'?",
+    "pregunta": "De los amigos de Job, ¿quién fue el primero en hablar?",
     "opciones": ["Bildad", "Elifaz", "Zofar"],
     "correcta": 2,
-    "refBiblica": "Job 4:1"
+    "refBiblica": "Job 4:1",
+    "dificultad": "dificil"
   },
   {
     "id": 38,
-    "pregunta": "En la visión de Ezequiel, ¿cuántas alas tenía cada uno de los cuatro seres vivientes?",
+    "pregunta": "En la visión de Ezequiel, ¿cuántas alas tenía cada uno de los seres vivientes?",
     "opciones": ["Dos", "Cuatro", "Seis"],
     "correcta": 2,
-    "refBiblica": "Ezequiel 1:6"
+    "refBiblica": "Ezequiel 1:6",
+    "dificultad": "dificil"
   },
   {
     "id": 39,
-    "pregunta": "Según el libro de Proverbios, ¿cuál es el principio de la sabiduría?",
-    "opciones": ["El mucho estudio", "La obediencia a los padres", "El temor de Jehová"],
+    "pregunta": "Según Proverbios, ¿cuál es el principio de la sabiduría?",
+    "opciones": ["El mucho estudio", "La obediencia", "El temor de Jehová"],
     "correcta": 3,
-    "refBiblica": "Proverbios 1:7"
+    "refBiblica": "Proverbios 1:7",
+    "dificultad": "facil"
   },
   {
     "id": 40,
-    "pregunta": "Cuál es el único libro del Antiguo Testamento que no menciona el nombre de Dios?",
+    "pregunta": "¿Qué libro del Antiguo Testamento no menciona explícitamente el nombre de Dios?",
     "opciones": ["Rut", "Ester", "Cantares"],
     "correcta": 2,
-    "refBiblica": "Estudio general del libro de Ester"
+    "refBiblica": "Estudio general del libro de Ester",
+    "dificultad": "dificil"
   },
   {
     "id": 41,
-    "pregunta": "Cómo se llamaba la abuela del rey David?",
+    "pregunta": "¿Cómo se llamaba la abuela del rey David, que era moabita?",
     "opciones": ["Sara", "Raab", "Rut"],
     "correcta": 3,
-    "refBiblica": "Rut 4:17, Mateo 1:5-6"
+    "refBiblica": "Rut 4:17",
+    "dificultad": "normal"
   },
   {
     "id": 42,
-    "pregunta": "De qué tribu de Israel era el apóstol Pablo?",
+    "pregunta": "¿De qué tribu de Israel era el apóstol Pablo?",
     "opciones": ["Judá", "Leví", "Benjamín"],
     "correcta": 3,
-    "refBiblica": "Filipenses 3:5"
+    "refBiblica": "Filipenses 3:5",
+    "dificultad": "normal"
   },
   {
     "id": 43,
-    "pregunta": "Cuántos capítulos tiene el libro del profeta Isaías?",
+    "pregunta": "¿Cuántos capítulos tiene el libro de Isaías?",
     "opciones": ["52", "66", "70"],
     "correcta": 2,
-    "refBiblica": "Índice del libro de Isaías"
+    "refBiblica": "Índice del libro de Isaías",
+    "dificultad": "dificil"
   },
   {
     "id": 44,
-    "pregunta": "A quién se le atribuye la autoría del libro de Lamentaciones?",
+    "pregunta": "¿A qué profeta se le atribuye tradicionalmente la autoría de Lamentaciones?",
     "opciones": ["David", "Isaías", "Jeremías"],
     "correcta": 3,
-    "refBiblica": "Tradición histórica y prólogo en algunas versiones (ej. Septuaginta)"
+    "refBiblica": "Tradición histórica",
+    "dificultad": "dificil"
   },
   {
     "id": 45,
-    "pregunta": "En el libro de Apocalipsis, ¿cuál iglesia es descrita como 'tibia'?",
+    "pregunta": "En Apocalipsis, ¿qué iglesia es descrita como 'tibia'?",
     "opciones": ["Éfeso", "Laodicea", "Esmirna"],
     "correcta": 2,
-    "refBiblica": "Apocalipsis 3:15-16"
+    "refBiblica": "Apocalipsis 3:15-16",
+    "dificultad": "normal"
   },
   {
     "id": 46,
-    "pregunta": "Qué profeta fue contemporáneo del rey Josías de Judá?",
+    "pregunta": "¿Qué profeta comenzó su ministerio durante el reinado del rey Josías?",
     "opciones": ["Elías", "Oseas", "Jeremías"],
     "correcta": 3,
-    "refBiblica": "Jeremías 1:1-2"
+    "refBiblica": "Jeremías 1:1-2",
+    "dificultad": "dificil"
   },
   {
     "id": 47,
-    "pregunta": "Cuál era el nombre del artesano principal que construyó el Tabernáculo en el desierto?",
+    "pregunta": "¿Cuál era el nombre del artesano principal que construyó el Tabernáculo?",
     "opciones": ["Aholiab", "Bezaleel", "Hur"],
     "correcta": 2,
-    "refBiblica": "Éxodo 31:1-3"
+    "refBiblica": "Éxodo 31:1-3",
+    "dificultad": "dificil"
   },
   {
     "id": 48,
-    "pregunta": "En la carta de Pablo a Filemón, ¿cómo se llamaba el esclavo por el cual Pablo intercedía?",
+    "pregunta": "En la carta a Filemón, ¿cómo se llamaba el esclavo por el cual Pablo intercedía?",
     "opciones": ["Tíquico", "Arquipo", "Onésimo"],
     "correcta": 3,
-    "refBiblica": "Filemón 1:10"
+    "refBiblica": "Filemón 1:10",
+    "dificultad": "normal"
   },
   {
     "id": 49,
-    "pregunta": "Qué rey de Judá fue sanado de una enfermedad mortal después de orar a Dios?",
+    "pregunta": "¿Qué rey de Judá fue sanado de una enfermedad mortal por Dios?",
     "opciones": ["Asa", "Ezequías", "Josafat"],
     "correcta": 2,
-    "refBiblica": "2 Reyes 20:1-6"
+    "refBiblica": "2 Reyes 20:1-6",
+    "dificultad": "normal"
   },
   {
     "id": 50,
-    "pregunta": "Cuántas hijas tuvo Job después de su prueba?",
+    "pregunta": "¿Cuántas hijas tuvo Job después de su prueba?",
     "opciones": ["Dos", "Tres", "Siete"],
     "correcta": 2,
-    "refBiblica": "Job 42:13"
+    "refBiblica": "Job 42:13",
+    "dificultad": "normal"
+  },
+  {
+    "id": 51,
+    "pregunta": "¿Qué comió Juan el Bautista en el desierto?",
+    "opciones": ["Pan y pescado", "Langostas y miel silvestre", "Dátiles e higos"],
+    "correcta": 2,
+    "refBiblica": "Mateo 3:4",
+    "dificultad": "facil"
+  },
+  {
+    "id": 52,
+    "pregunta": "¿Quién traicionó a Jesús por treinta piezas de plata?",
+    "opciones": ["Pedro", "Tomás", "Judas Iscariote"],
+    "correcta": 3,
+    "refBiblica": "Mateo 26:14-15",
+    "dificultad": "facil"
+  },
+  {
+    "id": 53,
+    "pregunta": "¿Cómo se llamaba el hermano de Moisés?",
+    "opciones": ["Aarón", "Josué", "Caleb"],
+    "correcta": 1,
+    "refBiblica": "Éxodo 4:14",
+    "dificultad": "facil"
+  },
+  {
+    "id": 54,
+    "pregunta": "¿Quién negó a Jesús tres veces antes de que cantara el gallo?",
+    "opciones": ["Juan", "Pedro", "Andrés"],
+    "correcta": 2,
+    "refBiblica": "Mateo 26:75",
+    "dificultad": "facil"
+  },
+  {
+    "id": 55,
+    "pregunta": "¿Cuál es el mandamiento más importante según Jesús?",
+    "opciones": ["No robar", "Honrar padre y madre", "Amar a Dios sobre todas las cosas"],
+    "correcta": 3,
+    "refBiblica": "Marcos 12:29-30",
+    "dificultad": "facil"
+  },
+  {
+    "id": 56,
+    "pregunta": "¿Quién fue el hombre más fuerte de la Biblia?",
+    "opciones": ["Goliat", "Sansón", "Hércules"],
+    "correcta": 2,
+    "refBiblica": "Jueces 14-16",
+    "dificultad": "facil"
+  },
+  {
+    "id": 57,
+    "pregunta": "En la parábola del hijo pródigo, ¿qué hizo el padre cuando su hijo regresó?",
+    "opciones": ["Lo castigó", "Lo ignoró", "Corrió a abrazarlo"],
+    "correcta": 3,
+    "refBiblica": "Lucas 15:20",
+    "dificultad": "facil"
+  },
+  {
+    "id": 58,
+    "pregunta": "¿Cómo se llamaba la madre de Jesús?",
+    "opciones": ["María", "Marta", "Isabel"],
+    "correcta": 1,
+    "refBiblica": "Lucas 1:30-31",
+    "dificultad": "facil"
+  },
+  {
+    "id": 59,
+    "pregunta": "¿Qué usó David para derrotar a Goliat?",
+    "opciones": ["Una espada", "Una lanza", "Una honda y una piedra"],
+    "correcta": 3,
+    "refBiblica": "1 Samuel 17:49",
+    "dificultad": "facil"
+  },
+  {
+    "id": 60,
+    "pregunta": "¿Cuál es el último libro de la Biblia?",
+    "opciones": ["Génesis", "Malaquías", "Apocalipsis"],
+    "correcta": 3,
+    "refBiblica": "Índice de la Biblia",
+    "dificultad": "facil"
+  },
+  {
+    "id": 61,
+    "pregunta": "¿De qué estaba hecha la zarza que vio Moisés y que no se consumía?",
+    "opciones": ["De fuego", "De oro", "Era un arbusto normal en llamas"],
+    "correcta": 3,
+    "refBiblica": "Éxodo 3:2",
+    "dificultad": "facil"
+  },
+  {
+    "id": 62,
+    "pregunta": "¿Quién fue el sucesor de Moisés para guiar a Israel a la Tierra Prometida?",
+    "opciones": ["Aarón", "Josué", "Caleb"],
+    "correcta": 2,
+    "refBiblica": "Deuteronomio 31:23",
+    "dificultad": "facil"
+  },
+  {
+    "id": 63,
+    "pregunta": "¿Alrededor de qué ciudad marcharon los israelitas por siete días para que sus muros cayeran?",
+    "opciones": ["Jerusalén", "Babilonia", "Jericó"],
+    "correcta": 3,
+    "refBiblica": "Josué 6:3-5",
+    "dificultad": "facil"
+  },
+  {
+    "id": 64,
+    "pregunta": "¿Qué recibió Moisés de Dios en el Monte Sinaí?",
+    "opciones": ["El maná", "Las tablas de la Ley", "El arca de la Alianza"],
+    "correcta": 2,
+    "refBiblica": "Éxodo 31:18",
+    "dificultad": "facil"
+  },
+  {
+    "id": 65,
+    "pregunta": "¿Quién fue vendido como esclavo por sus hermanos?",
+    "opciones": ["José", "Benjamín", "Rubén"],
+    "correcta": 1,
+    "refBiblica": "Génesis 37:28",
+    "dificultad": "facil"
+  },
+  {
+    "id": 66,
+    "pregunta": "¿Cómo se llamaba el padre de Juan el Bautista?",
+    "opciones": ["Simeón", "Zacarías", "José"],
+    "correcta": 2,
+    "refBiblica": "Lucas 1:5",
+    "dificultad": "facil"
+  },
+  {
+    "id": 67,
+    "pregunta": "¿Qué mujer derramó un perfume costoso sobre los pies de Jesús?",
+    "opciones": ["María Magdalena", "Marta", "María, hermana de Lázaro"],
+    "correcta": 3,
+    "refBiblica": "Juan 12:3",
+    "dificultad": "facil"
+  },
+  {
+    "id": 68,
+    "pregunta": "¿Cuál es el primer versículo de la Biblia?",
+    "opciones": ["Y la luz se hizo", "En el principio creó Dios los cielos y la tierra", "Este es el libro de las generaciones"],
+    "correcta": 2,
+    "refBiblica": "Génesis 1:1",
+    "dificultad": "facil"
+  },
+  {
+    "id": 69,
+    "pregunta": "¿Quién fue el profeta que fue tragado por un gran pez?",
+    "opciones": ["Isaías", "Jonás", "Eliseo"],
+    "correcta": 2,
+    "refBiblica": "Jonás 1:17",
+    "dificultad": "facil"
+  },
+  {
+    "id": 70,
+    "pregunta": "¿Qué señal le dio Dios a Noé como promesa de que no volvería a inundar la tierra?",
+    "opciones": ["Una paloma", "Un arco iris", "Una estrella"],
+    "correcta": 2,
+    "refBiblica": "Génesis 9:13",
+    "dificultad": "facil"
+  },
+  {
+    "id": 71,
+    "pregunta": "¿Cómo se llamaba el recaudador de impuestos de baja estatura que se subió a un árbol para ver a Jesús?",
+    "opciones": ["Mateo", "Zaqueo", "Bartimeo"],
+    "correcta": 2,
+    "refBiblica": "Lucas 19:1-4",
+    "dificultad": "facil"
+  },
+  {
+    "id": 72,
+    "pregunta": "¿Cuántos panes y peces usó Jesús para alimentar a la multitud de 5000?",
+    "opciones": ["Siete panes y tres peces", "Dos panes y cinco peces", "Cinco panes y dos peces"],
+    "correcta": 3,
+    "refBiblica": "Mateo 14:17-19",
+    "dificultad": "facil"
+  },
+  {
+    "id": 73,
+    "pregunta": "¿Qué le pidió el rey Salomón a Dios?",
+    "opciones": ["Riqueza", "Larga vida", "Sabiduría"],
+    "correcta": 3,
+    "refBiblica": "1 Reyes 3:9",
+    "dificultad": "facil"
+  },
+  {
+    "id": 74,
+    "pregunta": "¿A quién resucitó Jesús de entre los muertos en Betania?",
+    "opciones": ["Jairo", "Lázaro", "Tabita"],
+    "correcta": 2,
+    "refBiblica": "Juan 11:43-44",
+    "dificultad": "facil"
+  },
+  {
+    "id": 75,
+    "pregunta": "¿De qué material estaba hecha el arca del pacto?",
+    "opciones": ["Madera de cedro", "Madera de acacia", "Madera de olivo"],
+    "correcta": 2,
+    "refBiblica": "Éxodo 25:10",
+    "dificultad": "normal"
+  },
+  {
+    "id": 76,
+    "pregunta": "¿Cuál es el libro más corto del Nuevo Testamento?",
+    "opciones": ["Filemón", "Tito", "2 Juan"],
+    "correcta": 3,
+    "refBiblica": "Índice de la Biblia (conteo de versículos)",
+    "dificultad": "dificil"
+  },
+  {
+    "id": 77,
+    "pregunta": "¿Quién fue el padre del rey David?",
+    "opciones": ["Isaí", "Saúl", "Salmón"],
+    "correcta": 1,
+    "refBiblica": "Rut 4:22",
+    "dificultad": "facil"
+  },
+  {
+    "id": 78,
+    "pregunta": "¿Qué significa 'Emanuel'?",
+    "opciones": ["Dios es Rey", "Dios con nosotros", "Dios salva"],
+    "correcta": 2,
+    "refBiblica": "Mateo 1:23",
+    "dificultad": "facil"
+  },
+  {
+    "id": 79,
+    "pregunta": "¿Cuál de estas mujeres no fue esposa de Jacob?",
+    "opciones": ["Raquel", "Lea", "Séfora"],
+    "correcta": 3,
+    "refBiblica": "Génesis 29, Éxodo 2:21",
+    "dificultad": "facil"
+  },
+  {
+    "id": 80,
+    "pregunta": "En el Sermón del Monte, ¿a quiénes llama Jesús 'la sal de la tierra'?",
+    "opciones": ["A los profetas", "A los apóstoles", "A sus discípulos"],
+    "correcta": 3,
+    "refBiblica": "Mateo 5:13",
+    "dificultad": "facil"
+  },
+  {
+    "id": 81,
+    "pregunta": "¿Qué rey sabio escribió la mayor parte del libro de Proverbios?",
+    "opciones": ["David", "Ezequías", "Salomón"],
+    "correcta": 3,
+    "refBiblica": "Proverbios 1:1",
+    "dificultad": "facil"
+  },
+  {
+    "id": 82,
+    "pregunta": "Camino a Damasco, ¿qué le sucedió a Saulo (Pablo)?",
+    "opciones": ["Se cayó de su caballo", "Una luz del cielo lo cegó", "Un ángel le habló"],
+    "correcta": 2,
+    "refBiblica": "Hechos 9:3-4",
+    "dificultad": "facil"
+  },
+  {
+    "id": 83,
+    "pregunta": "¿Cuál fue la primera tentación que Satanás le presentó a Jesús en el desierto?",
+    "opciones": ["Convertir piedras en pan", "Saltar del templo", "Adorarlo a cambio de reinos"],
+    "correcta": 1,
+    "refBiblica": "Mateo 4:3",
+    "dificultad": "facil"
+  },
+  {
+    "id": 84,
+    "pregunta": "Adán y Eva vivían en un jardín llamado...",
+    "opciones": ["Paraíso", "Getsemaní", "Edén"],
+    "correcta": 3,
+    "refBiblica": "Génesis 2:8",
+    "dificultad": "facil"
+  },
+  {
+    "id": 85,
+    "pregunta": "¿Qué instrumento tocaba David para calmar al rey Saúl?",
+    "opciones": ["Flauta", "Arpa", "Lira"],
+    "correcta": 2,
+        "refBiblica": "1 Samuel 16:23",
+    "dificultad": "facil"
+  },
+  {
+    "id": 86,
+    "pregunta": "¿Quién fue el profeta que ungió a David como rey?",
+    "opciones": ["Natán", "Samuel", "Elías"],
+    "correcta": 2,
+    "refBiblica": "1 Samuel 16:13",
+    "dificultad": "facil"
+  },
+  {
+    "id": 87,
+    "pregunta": "¿Cómo se llamaba la montaña donde se detuvo el Arca de Noé?",
+    "opciones": ["Monte Sinaí", "Monte Ararat", "Monte Carmelo"],
+    "correcta": 2,
+    "refBiblica": "Génesis 8:4",
+    "dificultad": "facil"
+  },
+  {
+    "id": 88,
+    "pregunta": "¿Qué rey tuvo un sueño sobre una gran estatua hecha de diferentes metales?",
+    "opciones": ["Faraón", "Nabucodonosor", "Ciro"],
+    "correcta": 2,
+    "refBiblica": "Daniel 2:31-33",
+    "dificultad": "normal"
+  },
+  {
+    "id": 89,
+    "pregunta": "¿Cómo se llamaba el profeta que fue llevado al cielo en un carro de fuego?",
+    "opciones": ["Elías", "Eliseo", "Enoc"],
+    "correcta": 1,
+    "refBiblica": "2 Reyes 2:11",
+    "dificultad": "facil"
+  },
+  {
+    "id": 90,
+    "pregunta": "¿Qué ciudad es llamada 'la ciudad de David'?",
+    "opciones": ["Belén", "Hebrón", "Jerusalén"],
+    "correcta": 3,
+    "refBiblica": "2 Samuel 5:7",
+    "dificultad": "facil"
+  },
+  {
+    "id": 91,
+    "pregunta": "¿Cuál es el libro más largo de la Biblia por número de capítulos?",
+    "opciones": ["Génesis", "Salmos", "Isaías"],
+    "correcta": 2,
+    "refBiblica": "Índice de la Biblia",
+    "dificultad": "facil"
+  },
+  {
+    "id": 92,
+    "pregunta": "¿Quién escribió el libro de Apocalipsis?",
+    "opciones": ["El apóstol Pablo", "El apóstol Pedro", "El apóstol Juan"],
+    "correcta": 3,
+    "refBiblica": "Apocalipsis 1:1",
+    "dificultad": "facil"
+  },
+  {
+    "id": 93,
+    "pregunta": "Según Gálatas, ¿cuál NO es un fruto del Espíritu?",
+    "opciones": ["Paciencia", "Conocimiento", "Templanza"],
+    "correcta": 2,
+    "refBiblica": "Gálatas 5:22-23",
+    "dificultad": "normal"
+  },
+  {
+    "id": 94,
+    "pregunta": "¿Quién era el gobernador romano que sentenció a Jesús a la crucifixión?",
+    "opciones": ["Herodes", "César Augusto", "Poncio Pilato"],
+    "correcta": 3,
+    "refBiblica": "Mateo 27:24-26",
+    "dificultad": "facil"
+  },
+  {
+    "id": 95,
+    "pregunta": "¿Cuántas tribus se perdieron del Reino del Norte de Israel?",
+    "opciones": ["12", "10", "2"],
+    "correcta": 2,
+    "refBiblica": "1 Reyes 11:31, 2 Reyes 17:18",
+    "dificultad": "dificil"
+  },
+  {
+    "id": 96,
+    "pregunta": "¿Cómo se llamaba el hijo de Jonatán, a quien David mostró misericordia?",
+    "opciones": ["Mefi-boset", "Is-boset", "Amnón"],
+    "correcta": 1,
+    "refBiblica": "2 Samuel 9:6-7",
+    "dificultad": "dificil"
+  },
+  {
+    "id": 97,
+    "pregunta": "En el Pentecostés, ¿qué apareció sobre las cabezas de los discípulos?",
+    "opciones": ["Aureolas de luz", "Lenguas como de fuego", "Palomas blancas"],
+    "correcta": 2,
+    "refBiblica": "Hechos 2:3",
+    "dificultad": "facil"
+  },
+  {
+    "id": 98,
+    "pregunta": "¿Qué rey persa permitió a los judíos regresar a Jerusalén para reconstruir el templo?",
+    "opciones": ["Artajerjes", "Ciro", "Darío"],
+    "correcta": 2,
+    "refBiblica": "Esdras 1:1-3",
+    "dificultad": "dificil"
+  },
+  {
+    "id": 99,
+    "pregunta": "¿Cuál de los Diez Mandamientos es el único que viene con una promesa?",
+    "opciones": ["No matarás", "No robarás", "Honra a tu padre y a tu madre"],
+    "correcta": 3,
+    "refBiblica": "Efesios 6:2, Éxodo 20:12",
+    "dificultad": "dificil"
+  },
+  {
+    "id": 100,
+    "pregunta": "¿A quién se refiere el título 'El Cordero de Dios' en el Nuevo Testamento?",
+    "opciones": ["Juan el Bautista", "Abraham", "Jesús"],
+    "correcta": 3,
+    "refBiblica": "Juan 1:29",
+    "dificultad": "facil"
   }
 ]
