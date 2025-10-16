@@ -5,7 +5,7 @@ let preguntas = [];
 let aidiActual = null;
 let puntos = parseInt(localStorage.getItem("puntos") || 10);
 let nombre = localStorage.getItem("nombre") || "";
-let helpUsed = false; // NUEVA variable de estado
+let helpUsed = false;
 
 // =====================================
 //           Elementos del DOM
@@ -16,7 +16,7 @@ const opcionesContainer = document.getElementById('opciones-container');
 const playerGreeting = document.getElementById('player-greeting');
 const puntosAcumuladosSpan = document.getElementById('puntos-acumulados');
 const borrarDatosBtn = document.getElementById('borrar-datos-btn');
-const helpButton = document.getElementById('help-button'); // NUEVO elemento
+const helpButton = document.getElementById('help-button');
 const gameSection = document.getElementById('game-section');
 const rulesSection = document.getElementById('rules-section');
 const navLinks = document.querySelectorAll('nav a');
@@ -27,7 +27,7 @@ const navLinks = document.querySelectorAll('nav a');
 // =====================================
 
 /** Muestra un toast/alerta temporal */
-function showToast(message, isSuccess = true, isWarning = false) {
+function showToast(message, isSuccess = true) {
     const toast = document.createElement('div');
     toast.textContent = message;
     
@@ -36,15 +36,8 @@ function showToast(message, isSuccess = true, isWarning = false) {
     toast.style.right = '20px';
     toast.style.padding = '15px 25px';
     toast.style.borderRadius = '8px';
-    
-    if (isWarning) {
-        toast.style.backgroundColor = 'var(--color-alerta-warning)';
-        toast.style.color = 'var(--color-texto-principal)';
-    } else {
-        toast.style.backgroundColor = isSuccess ? 'var(--color-alerta-success)' : 'var(--color-alerta-error)';
-        toast.style.color = 'white';
-    }
-    
+    toast.style.backgroundColor = isSuccess ? 'var(--color-alerta-success)' : 'var(--color-alerta-error)';
+    toast.style.color = 'white';
     toast.style.zIndex = '1000';
     toast.style.boxShadow = '0 4px 10px rgba(0,0,0,0.2)';
     toast.style.transition = 'opacity 0.5s ease-in-out, transform 0.3s';
@@ -96,14 +89,14 @@ function renderPregunta() {
         return;
     }
 
-    // Reinicia el estado de ayuda y visibilidad de referencia
+    // Reinicia el estado de ayuda y visibilidad de elementos
     helpUsed = false;
     helpButton.disabled = false;
+    helpButton.style.display = 'block'; // === CAMBIO: Asegura que el botón de ayuda reaparezca
     referenciaBiblica.style.display = 'none'; 
     
     const pregunta = preguntas[aidiActual];
     preguntaTexto.textContent = pregunta.pregunta;
-    referenciaBiblica.textContent = ''; 
     opcionesContainer.innerHTML = ''; 
 
     pregunta.opciones.forEach((opcion, index) => {
@@ -138,30 +131,26 @@ function updatePlayerInfo() {
 
 /** Muestra la referencia bíblica y marca la ayuda como usada */
 function useHelp() {
-    if (helpUsed) return; // Evita usar la ayuda más de una vez
+    if (helpUsed) return;
     
     const pregunta = preguntas[aidiActual];
     referenciaBiblica.textContent = `Referencia: ${pregunta.refBiblica}`;
-    referenciaBiblica.style.display = 'block'; // Muestra la referencia
-    helpButton.disabled = true; // Deshabilita el botón de ayuda
-    helpUsed = true; // Marca que se usó la ayuda
-    showToast("Referencia revelada. Puntuación de acierto reducida a +3.", false, true); // Advertencia
+    referenciaBiblica.style.display = 'block';
+    
+    // === CAMBIO: Ocultamos el botón en vez de deshabilitarlo y quitamos el toast
+    helpButton.style.display = 'none'; 
+    helpUsed = true;
 }
 
 /** Chequea la respuesta seleccionada */
 function checkAnswer(boton) {
     const pregunta = preguntas[aidiActual];
     
-    // Muestra la referencia bíblica si no se ha usado ayuda (o si es incorrecta)
-    if (!helpUsed) {
-        referenciaBiblica.textContent = `Referencia: ${pregunta.refBiblica}`;
-    }
+    referenciaBiblica.textContent = `Referencia: ${pregunta.refBiblica}`;
     referenciaBiblica.style.display = 'block';
     
-    // Deshabilita todos los botones para finalizar la ronda
     document.querySelectorAll('.game-button').forEach(btn => btn.disabled = true);
-    helpButton.disabled = true;
-
+    helpButton.style.display = 'none'; // Ocultamos también el botón de ayuda al responder
 
     if (boton === pregunta.correcta) {
         // Correcto
@@ -169,19 +158,21 @@ function checkAnswer(boton) {
         puntos += puntosGanados;
         showToast(`¡Correcto! Sumas ${puntosGanados} puntos.`, true);
         
-        // Espera un poco antes de cambiar de pregunta
         setTimeout(() => {
             updatePlayerInfo();
             changeAidi();
-        }, 1500);
+        }, 2000); // Aumentamos un poco el tiempo para leer la referencia
         
     } else {
         // Incorrecto
         puntos -= 2;
         showToast("Incorrecto. Pierdes 2 puntos.", false);
-        updatePlayerInfo(); // Actualiza puntos inmediatamente
+        updatePlayerInfo();
         
-        // Si es incorrecto, no avanzamos, pero mantenemos deshabilitado para que vea la referencia
+        // === CAMBIO: Ahora, después de un error, también avanzamos a la siguiente pregunta
+        setTimeout(() => {
+            changeAidi();
+        }, 2500); // Un poco más de tiempo para que el usuario lea la referencia y entienda el error
     }
 }
 
@@ -206,7 +197,7 @@ function borrarLocalStorage() {
         localStorage.removeItem("puntos");
         nombre = "";
         puntos = 10;
-        solicitarNombre(); // Vuelve a solicitar el nombre
+        solicitarNombre();
         updatePlayerInfo();
         showToast("Datos borrados. Puntos reiniciados a 10.", true);
     }
@@ -232,34 +223,34 @@ function navigate(sectionId) {
 //           Inicialización
 // =====================================
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Carga los datos del jugador y solicita el nombre
     updatePlayerInfo(); 
     solicitarNombre();
-    
-    // 2. Carga las preguntas del JSON
     obtenerPreguntas();
     
-    // 3. Asigna eventos
     borrarDatosBtn.addEventListener('click', borrarLocalStorage);
-    helpButton.addEventListener('click', useHelp); // Evento para el botón de ayuda
+    helpButton.addEventListener('click', useHelp);
     
-
-    // 4. Configura navegación
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const targetHref = link.getAttribute('href').substring(1);
-            const sectionId = targetHref === 'footer' ? 'footer' : (targetHref === 'rules-section' ? 'rules-section' : 'game-section');
+            let sectionId;
 
-            if (sectionId === 'footer') {
-                document.getElementById('footer').scrollIntoView({ behavior: 'smooth' });
+            if (targetHref === 'footer') {
+                 document.getElementById('footer').scrollIntoView({ behavior: 'smooth' });
+                 // No cambiamos de sección visible en main, solo hacemos scroll
+                 return; 
+            } else if (targetHref.includes('rules')) {
+                sectionId = 'rules-section';
             } else {
-                navigate(sectionId);
-                document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+                sectionId = 'game-section';
             }
+            
+            navigate(sectionId);
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
         });
     });
 
-    // Navega a la sección de juego por defecto al cargar
     navigate('game-section');
 });
+        
