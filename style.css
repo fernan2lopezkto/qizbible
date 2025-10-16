@@ -11,7 +11,7 @@
     --color-secundario: #28a745; /* Verde (Similar a tus capturas) */
     --color-alerta-success: #28a745;
     --color-alerta-error: #dc3545;
-    --color-alerta-warning: #ffc107; /* Nuevo color para ayuda */
+    --color-alerta-warning: #ffc107;
     --color-borde: #dee2e6;
     --color-boton-principal: var(--color-secundario);
     --color-boton-hover: #1e7e34;
@@ -30,7 +30,7 @@
         --color-secundario: #4caf50; /* Verde más claro */
         --color-alerta-success: #4caf50;
         --color-alerta-error: #ff5252;
-        --color-alerta-warning: #ffeb3b; /* Nuevo color para ayuda */
+        --color-alerta-warning: #ffeb3b;
         --color-borde: #333333;
         --color-boton-principal: var(--color-secundario);
         --color-boton-hover: #388e3c;
@@ -109,7 +109,6 @@ h2 {
     margin-bottom: 20px;
     text-align: center;
     font-style: italic;
-    /* Oculto por defecto, se muestra con la ayuda o respuesta */
     display: none; 
 }
 
@@ -158,18 +157,19 @@ h2 {
     background-color: #c82333;
 }
 
-/* Estilo para el nuevo botón de ayuda */
+/* === CAMBIO: Estilo del botón de ayuda modificado === */
 .help-button {
-    background-color: var(--color-alerta-warning);
-    color: var(--color-texto-principal);
+    background-color: var(--color-primario); /* Usamos el color azul principal */
+    color: white; /* Texto blanco para buena legibilidad */
     padding: 10px 20px;
     font-size: 0.9em;
     margin-top: 10px;
-    border: 2px solid var(--color-alerta-warning);
+    border: 2px solid var(--color-primario);
 }
 
 .help-button:hover:not(:disabled) {
-    background-color: #e0ac00; /* Un poco más oscuro */
+    background-color: #0056b3; /* Un azul más oscuro para el hover */
+    border-color: #0056b3;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
@@ -217,7 +217,7 @@ h2 {
     color: white;
     padding: 40px 20px;
     text-align: center;
-    margin-top: auto; /* Empuja el footer hacia abajo */
+    margin-top: auto;
 }
 
 .footer-avatar {
@@ -323,4 +323,4 @@ nav a:hover::after, nav a.active::after {
     .card {
         padding: 20px;
     }
-}
+    }
