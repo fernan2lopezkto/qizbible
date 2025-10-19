@@ -2,8 +2,8 @@
 //           Variables de Estado
 // =====================================
 let todasLasPreguntas = [];
-let colaDePreguntas = []; // === NUEVO: Un array ordenado con las preguntas a jugar
-let indicePreguntaActual = 0; // === NUEVO: Para saber qué pregunta de la cola toca
+let colaDePreguntas = []; // Un array ordenado con las preguntas a jugar
+let indicePreguntaActual = 0; // Para saber qué pregunta de la cola toca
 let puntos = parseInt(localStorage.getItem("puntos") || 10);
 let nombre = localStorage.getItem("nombre") || "";
 let helpUsed = false;
@@ -58,7 +58,7 @@ function showToast(message, isSuccess = true) {
     }, 3000);
 }
 
-// === NUEVA LÓGICA: Para ordenar el juego por dificultad ===
+// Lógica para ordenar el juego por dificultad
 async function obtenerYOrganizarPreguntas() {
     try {
         const respuesta = await fetch('preguntas.json');
@@ -73,12 +73,10 @@ async function obtenerYOrganizarPreguntas() {
             return;
         }
 
-        // 1. Separamos las preguntas por dificultad
         const faciles = todasLasPreguntas.filter(p => p.dificultad === 'facil');
         const normales = todasLasPreguntas.filter(p => p.dificultad === 'normal');
         const dificiles = todasLasPreguntas.filter(p => p.dificultad === 'dificil');
 
-        // 2. Función para barajar (mezclar) un array
         function barajarArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
@@ -90,10 +88,9 @@ async function obtenerYOrganizarPreguntas() {
         barajarArray(normales);
         barajarArray(dificiles);
 
-        // 3. Creamos la cola de juego en el orden: Difícil -> Normal -> Fácil
-        colaDePreguntas = [...dificiles, ...normales, ...faciles];
+        // === CAMBIO CLAVE: Corregimos el orden de la cola de preguntas ===
+        colaDePreguntas = [...faciles, ...normales, ...dificiles];
         
-        // 4. Empezamos el juego
         cargarSiguientePregunta();
 
     } catch (error) {
@@ -111,7 +108,6 @@ function renderPregunta(pregunta) {
         return;
     }
 
-    // Reinicia el estado de ayuda y visibilidad de elementos
     helpUsed = false;
     helpButton.disabled = false;
     helpButton.style.display = 'block';
@@ -130,9 +126,8 @@ function renderPregunta(pregunta) {
     });
 }
 
-// === NUEVA LÓGICA: Carga la siguiente pregunta de la cola ===
+/** Carga la siguiente pregunta de la cola */
 function cargarSiguientePregunta() {
-    // Si ya no hay más preguntas en la cola
     if (indicePreguntaActual >= colaDePreguntas.length) {
         preguntaTexto.textContent = "¡Felicitaciones! Has completado todas las preguntas. ¡Gloria a Dios por tu esfuerzo!";
         opcionesContainer.innerHTML = '';
@@ -141,7 +136,6 @@ function cargarSiguientePregunta() {
         return;
     }
 
-    // Verificamos si hay un cambio de dificultad para dar el premio
     if (indicePreguntaActual > 0) {
         const preguntaActual = colaDePreguntas[indicePreguntaActual];
         const preguntaAnterior = colaDePreguntas[indicePreguntaActual - 1];
@@ -168,18 +162,18 @@ function updatePlayerInfo() {
 //           Lógica del Juego
 // =====================================
 
-// === NUEVA LÓGICA: Popup que avisa el cambio de nivel y da puntos ===
+/** Popup que avisa el cambio de nivel y da puntos */
 function notificarCambioDificultad(nuevaDificultad) {
+    // === CAMBIO: Agregamos el texto para el nivel difícil ===
     const dificultadTexto = {
         normal: "normales",
-        facil: "fáciles"
+        dificil: "difíciles"
     };
     const mensaje = `¡Gloria a Dios por tu avance! Has superado el nivel anterior.\n\nAhora vienen las preguntas ${dificultadTexto[nuevaDificultad]}.\n\n¡Recibes 50 puntos de bendición!`;
     
     puntos += 50;
     updatePlayerInfo();
     
-    // Usamos un alert simple como pediste
     alert(mensaje);
 }
 
@@ -214,7 +208,7 @@ function checkAnswer(boton) {
     } else {
         puntos -= 2;
         showToast("Incorrecto. Pierdes 2 puntos.", false);
-        tiempoEspera = 2500; // Más tiempo para leer la referencia en el error
+        tiempoEspera = 2500;
     }
     
     updatePlayerInfo();
@@ -241,7 +235,7 @@ function borrarLocalStorage() {
     if (confirm("¿Estás seguro de que deseas borrar tu nombre y puntos? Se reiniciará el juego.")) {
         localStorage.removeItem("nombre");
         localStorage.removeItem("puntos");
-        window.location.reload(); // Recargamos la página para reiniciar todo
+        window.location.reload();
     }
 }
 
@@ -256,7 +250,6 @@ function navigate(sectionId) {
     }
 
     navLinks.forEach(link => link.classList.remove('active'));
-    // Buscamos el link que apunte a la sección, incluyendo el caso de "juego" que es game-section
     const targetLink = document.querySelector(`nav a[href*="${sectionId.split('-')[0]}"]`);
     if(targetLink) {
         targetLink.classList.add('active');
@@ -270,7 +263,6 @@ document.addEventListener('DOMContentLoaded', () => {
     updatePlayerInfo(); 
     solicitarNombre();
     
-    // === CAMBIO: Llamamos a la nueva función que organiza todo
     obtenerYOrganizarPreguntas();
     
     borrarDatosBtn.addEventListener('click', borrarLocalStorage);
